@@ -1,101 +1,319 @@
-import Image from "next/image";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/card';
+import {
+  ChevronDown,
+  History,
+  Home,
+  Layout,
+  Menu,
+  Settings,
+  Users,
+  AudioWaveform,
+  BadgeCheck,
+  Bell,
+  BookOpen,
+  Bot,
+  ChevronRight,
+  ChevronsUpDown,
+  Command,
+  CreditCard,
+  Folder,
+  Forward,
+  Frame,
+  GalleryVerticalEnd,
+  LogOut,
+  Map,
+  MoreHorizontal,
+  PieChart,
+  Plus,
+  Settings2,
+  Sparkles,
+  SquareTerminal,
+  Trash2,
+} from 'lucide-react';
 
-export default function Home() {
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarRail,
+  SidebarTrigger,
+} from '@/components/ui/sidebar';
+
+const data = {
+  user: {
+    name: 'shadcn',
+    email: 'm@example.com',
+    avatar: '/avatars/shadcn.jpg',
+  },
+  teams: [
+    {
+      name: 'Acme Inc',
+      logo: GalleryVerticalEnd,
+      plan: 'Enterprise',
+    },
+    {
+      name: 'Acme Corp.',
+      logo: AudioWaveform,
+      plan: 'Startup',
+    },
+    {
+      name: 'Evil Corp.',
+      logo: Command,
+      plan: 'Free',
+    },
+  ],
+  navMain: [
+    {
+      title: 'Playground',
+      url: '#',
+      icon: SquareTerminal,
+      isActive: true,
+      items: [
+        {
+          title: 'History',
+          url: '#',
+        },
+        {
+          title: 'Starred',
+          url: '#',
+        },
+        {
+          title: 'Settings',
+          url: '#',
+        },
+      ],
+    },
+    {
+      title: 'Models',
+      url: '#',
+      icon: Bot,
+      items: [
+        {
+          title: 'Genesis',
+          url: '#',
+        },
+        {
+          title: 'Explorer',
+          url: '#',
+        },
+        {
+          title: 'Quantum',
+          url: '#',
+        },
+      ],
+    },
+    {
+      title: 'Documentation',
+      url: '#',
+      icon: BookOpen,
+      items: [
+        {
+          title: 'Introduction',
+          url: '#',
+        },
+        {
+          title: 'Get Started',
+          url: '#',
+        },
+        {
+          title: 'Tutorials',
+          url: '#',
+        },
+        {
+          title: 'Changelog',
+          url: '#',
+        },
+      ],
+    },
+    {
+      title: 'Settings',
+      url: '#',
+      icon: Settings2,
+      items: [
+        {
+          title: 'General',
+          url: '#',
+        },
+        {
+          title: 'Team',
+          url: '#',
+        },
+        {
+          title: 'Billing',
+          url: '#',
+        },
+        {
+          title: 'Limits',
+          url: '#',
+        },
+      ],
+    },
+  ],
+  projects: [
+    {
+      name: 'Design Engineering',
+      url: '#',
+      icon: Frame,
+    },
+    {
+      name: 'Sales & Marketing',
+      url: '#',
+      icon: PieChart,
+    },
+    {
+      name: 'Travel',
+      url: '#',
+      icon: Map,
+    },
+  ],
+};
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <header className='fixed top-0 left-0 right-0 h-14 border-b bg-background z-50 flex items-center justify-between px-4'>
+        <div className='flex items-center gap-2'>
+          <h1 className='text-xl font-semibold'>React Collection</h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className='flex gap-2'>
+          <Link href='#'>Button</Link>
+          <Link href='#'>Button</Link>
+          <Link href='#'>Button</Link>
+        </div>
+      </header>
+      <div className='flex h-full w-full pt-14'>
+        <Sidebar collapsible='icon' className='pt-14'>
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupLabel>Platform</SidebarGroupLabel>
+              <SidebarMenu>
+                {data.navMain.map(item => (
+                  <Collapsible
+                    key={item.title}
+                    asChild
+                    defaultOpen={item.isActive}
+                    className='group/collapsible'>
+                    <SidebarMenuItem>
+                      <CollapsibleTrigger asChild>
+                        <SidebarMenuButton tooltip={item.title}>
+                          {item.icon && <item.icon />}
+                          <span>{item.title}</span>
+                          <ChevronRight className='ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
+                        </SidebarMenuButton>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {item.items?.map(subItem => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton asChild>
+                                <a href={subItem.url}>
+                                  <span>{subItem.title}</span>
+                                </a>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    </SidebarMenuItem>
+                  </Collapsible>
+                ))}
+              </SidebarMenu>
+            </SidebarGroup>
+            {/* group-data-[collapsible=icon]:hidden */}
+            <SidebarGroup>
+              <SidebarGroupLabel>Projects</SidebarGroupLabel>
+              <SidebarMenu>
+                {data.projects.map(item => (
+                  <SidebarMenuItem key={item.name}>
+                    <SidebarMenuButton asChild>
+                      <a href={item.url}>
+                        <item.icon />
+                        <span>{item.name}</span>
+                      </a>
+                    </SidebarMenuButton>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <SidebarMenuAction showOnHover>
+                          <MoreHorizontal />
+                          <span className='sr-only'>More</span>
+                        </SidebarMenuAction>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent
+                        className='w-48 rounded-lg'
+                        side='bottom'
+                        align='end'>
+                        <DropdownMenuItem>
+                          <Folder className='text-muted-foreground' />
+                          <span>View Project</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Forward className='text-muted-foreground' />
+                          <span>Share Project</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <Trash2 className='text-muted-foreground' />
+                          <span>Delete Project</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </SidebarMenuItem>
+                ))}
+                <SidebarMenuItem>
+                  <SidebarMenuButton className='text-sidebar-foreground/70'>
+                    <MoreHorizontal className='text-sidebar-foreground/70' />
+                    <span>More</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroup>
+          </SidebarContent>
+          <SidebarRail />
+        </Sidebar>
+
+        {/* 메인 내용*/}
+        <div className='flex justfiy-center items-center w-full h-full p-10 overflow-auto relative'>
+          <SidebarTrigger className='absolute top-0 left-0' />
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full h-full'>
+            {Array.from({ length: 9 }).map((_, i) => (
+              <Card key={i} className='w-full h-full overflow-hidden'>
+                <div className='aspect-video bg-muted' />
+                <CardContent className='p-4'>
+                  <p className='text-sm text-muted-foreground'>
+                    How to create React components
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
