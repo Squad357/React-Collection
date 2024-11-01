@@ -17,8 +17,7 @@ import {
   SquareTerminal,
   Trash2,
 } from 'lucide-react';
-import Link from 'next/link';
-
+import Header from '@/components/layout/Header';
 import {
   Collapsible,
   CollapsibleContent,
@@ -179,16 +178,7 @@ const data = {
 export default function HomePage() {
   return (
     <>
-      <header className='fixed top-0 left-0 right-0 h-14 border-b bg-background z-50 flex items-center justify-between px-4'>
-        <div className='flex items-center gap-2'>
-          <h1 className='text-xl font-semibold'>React Collection</h1>
-        </div>
-        <div className='flex gap-2'>
-          <Link href='#'>Button</Link>
-          <Link href='#'>Button</Link>
-          <Link href='#'>Button</Link>
-        </div>
-      </header>
+      <Header />
       <div className='flex h-full w-full pt-14'>
         <Sidebar collapsible='icon' className='pt-14'>
           <SidebarContent>
