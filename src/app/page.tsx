@@ -1,38 +1,23 @@
 'use client';
-import React from 'react';
-import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import {
-  ChevronDown,
-  History,
-  Home,
-  Layout,
-  Menu,
-  Settings,
-  Users,
   AudioWaveform,
-  BadgeCheck,
-  Bell,
   BookOpen,
   Bot,
   ChevronRight,
-  ChevronsUpDown,
   Command,
-  CreditCard,
   Folder,
   Forward,
   Frame,
   GalleryVerticalEnd,
-  LogOut,
   Map,
   MoreHorizontal,
   PieChart,
-  Plus,
   Settings2,
-  Sparkles,
   SquareTerminal,
   Trash2,
 } from 'lucide-react';
+import Link from 'next/link';
 
 import {
   Collapsible,
@@ -42,11 +27,8 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import {
