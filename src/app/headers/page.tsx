@@ -58,8 +58,9 @@ function Header() {
     <>
       <div className='m-auto w-[1300px] h-[800px] border-dashed border-red-500 border-8 relative'>
         <header className='absolute top-0 left-0 right-0 border-b-2 h-14 items-center m-auto flex p-2 justify-center w-full shadow-md border-4 border-black'>
-          <div className='flex justify-between w-full items-center px-1 m-auto max-w-[800px] '>
-            <div className=''>
+          <div className='flex justify-between w-full items-center px-1 m-auto max-w-[800px]'>
+            {/* 로고 이미지 */}
+            <div>
               <Link href='#'>
                 <Image
                   src={headers}
@@ -73,6 +74,8 @@ function Header() {
                 />
               </Link>
             </div>
+
+            {/* 링크 버튼 리스트 */}
             <div
               className={`flex ${gap} transition-all duration-300 ${
                 animate ? 'bg-orange-300 transform scale-105 opacity-75' : ''
@@ -89,6 +92,7 @@ function Header() {
           </div>
         </header>
 
+        {/* 옵션 */}
         <div className='flex flex-col gap-10 mt-10 p-5'>
           <HeaderOptional handleGapChange={handleGapChange} />
           <CodeSnippet code={codeSnippet} highlight={highlight} />
@@ -121,7 +125,7 @@ function HeaderOptional({ handleGapChange }: HeaderOptionalProps) {
 
 interface CodeSnippetProps {
   code: string;
-  highlight: boolean; // highlight props 추가
+  highlight: boolean;
 }
 
 const CodeSnippet: React.FC<CodeSnippetProps> = ({ code, highlight }) => {
