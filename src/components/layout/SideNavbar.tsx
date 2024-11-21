@@ -73,16 +73,16 @@ const data = {
       isActive: true,
       items: [
         {
-          title: 'History',
-          url: '#',
+          title: 'Header',
+          url: '/category/header',
         },
         {
-          title: 'Starred',
-          url: '#',
+          title: 'Button',
+          url: '/category/button',
         },
         {
-          title: 'Settings',
-          url: '#',
+          title: 'Tab',
+          url: '/category/tab',
         },
       ],
     },
