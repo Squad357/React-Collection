@@ -1,7 +1,13 @@
 import SidenNavbar from '@/components/layout/SideNavbar';
 import { SidebarTrigger } from '@/components/ui/sidebar';
+import { CategoryComponents } from '@/lib/categoryComponents';
 
-export default function Post() {
+type Params = Promise<{ id: number }>;
+
+export default async function Post({ params }: { params: Params }) {
+  const { id } = await params;
+  const Component = CategoryComponents[id];
+
   return (
     <main className='flex h-full w-full pt-[74px]'>
       <SidenNavbar />
@@ -9,9 +15,11 @@ export default function Post() {
         <SidebarTrigger className='absolute top-0 left-0' />
         <h1 className='pt-7 pb-16 text-4xl'>Title</h1>
         <div className='flex justify-between h-[540px]'>
-          <div className='w-[calc(50%-5px)] h-full bg-muted rounded-md'></div>
+          <div className='w-[calc(50%-5px)] h-full bg-muted rounded-md'>
+            <Component />
+          </div>
           <div className='w-[calc(50%-5px)] h-full border border-muted p-6 rounded-md'>
-            <p className='text-border'>1</p>
+            {/* <p className='text-border'>1</p> */}
           </div>
         </div>
       </section>
