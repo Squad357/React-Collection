@@ -3,387 +3,396 @@
 @tailwind utilities;
 
 body {
-	font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer base {
-	:root {
-		--background: 0 0% 100%;
-		--foreground: 0 0% 3.9%;
-		--card: 0 0% 100%;
-		--card-foreground: 0 0% 3.9%;
-		--popover: 0 0% 100%;
-		--popover-foreground: 0 0% 3.9%;
-		--primary: 0 0% 9%;
-		--primary-foreground: 0 0% 98%;
-		--secondary: 0 0% 96.1%;
-		--secondary-foreground: 0 0% 9%;
-		--muted: 0 0% 96.1%;
-		--muted-foreground: 0 0% 45.1%;
-		--accent: 0 0% 96.1%;
-		--accent-foreground: 0 0% 9%;
-		--destructive: 0 84.2% 60.2%;
-		--destructive-foreground: 0 0% 98%;
-		--border: 0 0% 89.8%;
-		--input: 0 0% 89.8%;
-		--ring: 0 0% 3.9%;
-		--chart-1: 12 76% 61%;
-		--chart-2: 173 58% 39%;
-		--chart-3: 197 37% 24%;
-		--chart-4: 43 74% 66%;
-		--chart-5: 27 87% 67%;
-		--radius: 0.5rem;
-		--sidebar-background: 0 0% 98%;
-		--sidebar-foreground: 240 5.3% 26.1%;
-		--sidebar-primary: 240 5.9% 10%;
-		--sidebar-primary-foreground: 0 0% 98%;
-		--sidebar-accent: 240 4.8% 95.9%;
-		--sidebar-accent-foreground: 240 5.9% 10%;
-		--sidebar-border: 220 13% 91%;
-		--sidebar-ring: 217.2 91.2% 59.8%;
-	}
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 
-	.dark {
-		--background: 0 0% 3.9%;
-		--foreground: 0 0% 98%;
-		--card: 0 0% 3.9%;
-		--card-foreground: 0 0% 98%;
-		--popover: 0 0% 3.9%;
-		--popover-foreground: 0 0% 98%;
-		--primary: 0 0% 98%;
-		--primary-foreground: 0 0% 9%;
-		--secondary: 0 0% 14.9%;
-		--secondary-foreground: 0 0% 98%;
-		--muted: 0 0% 14.9%;
-		--muted-foreground: 0 0% 63.9%;
-		--accent: 0 0% 14.9%;
-		--accent-foreground: 0 0% 98%;
-		--destructive: 0 62.8% 30.6%;
-		--destructive-foreground: 0 0% 98%;
-		--border: 0 0% 14.9%;
-		--input: 0 0% 14.9%;
-		--ring: 0 0% 83.1%;
-		--chart-1: 220 70% 50%;
-		--chart-2: 160 60% 45%;
-		--chart-3: 30 80% 55%;
-		--chart-4: 280 65% 60%;
-		--chart-5: 340 75% 55%;
-		--sidebar-background: 240 5.9% 10%;
-		--sidebar-foreground: 240 4.8% 95.9%;
-		--sidebar-primary: 224.3 76.3% 48%;
-		--sidebar-primary-foreground: 0 0% 100%;
-		--sidebar-accent: 240 3.7% 15.9%;
-		--sidebar-accent-foreground: 240 4.8% 95.9%;
-		--sidebar-border: 240 3.7% 15.9%;
-		--sidebar-ring: 217.2 91.2% 59.8%;
-	}
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 }
 
 @layer base {
-	* {
-		@apply border-border;
-	}
+  * {
+    @apply border-border;
+  }
 
-	body {
-		@apply bg-background text-foreground max-w-[1400px] my-0 mx-auto;
-	}
+  body {
+    @apply bg-background text-foreground max-w-[1400px] my-0 mx-auto;
+  }
 }
 
 pre.shiki {
-	padding: 10px;
-	border-radius: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+code.shiki {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .highlight-effect {
-	border: 2px solid yellow;
-	/* 강조 효과를 위한 스타일 */
-	background-color: rgba(255, 255, 0, 0.2);
-	/* 배경색 변경 */
+  border: 2px solid yellow;
+  /* 강조 효과를 위한 스타일 */
+  background-color: rgba(255, 255, 0, 0.2);
+  /* 배경색 변경 */
 }
 
 .highlighted-gap {
-	background-color: rgba(210, 164, 115, 0.87);
-	/* 노란색 배경 */
-	font-weight: bold;
-	/* 굵은 글씨 */
+  background-color: rgba(210, 164, 115, 0.87);
+  /* 노란색 배경 */
+  font-weight: bold;
+  /* 굵은 글씨 */
 }
 
 @keyframes highlight {
-	0% {
-		opacity: 0;
-		transform: scale(0.9);
-	}
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 
-	50% {
-		opacity: 0.5;
-		transform: scale(1.05);
-	}
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
 
-	100% {
-		opacity: 1;
-		transform: scale(1);
-	}
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .highlighted-gap {
-	animation: highlight 0.5s ease-in-out forwards;
+  animation: highlight 0.5s ease-in-out forwards;
 }
 
 .code-preview {
-	@apply font-mono text-sm;
-	max-width: 100%;
-	overflow-x: auto;
+  @apply font-mono text-sm;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .code-preview pre {
-	margin: 0;
-	padding: 1.5rem;
-	background-color: #1e1e1e;
-	border-radius: 0.5rem;
-	font-size: 0.875rem;
-	line-height: 1.7;
-	white-space: pre-wrap;
-	word-break: break-word;
+  margin: 0;
+  padding: 1.5rem;
+  background-color: #1e1e1e;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .code-preview code {
-	display: block;
-	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-.code-preview [class*="className"] {
-	word-break: break-all;
-	max-width: 100%;
+.code-preview [class*='className'] {
+  word-break: break-all;
+  max-width: 100%;
 }
 
 .code-preview::-webkit-scrollbar {
-	height: 8px;
+  height: 8px;
 }
 
 .code-preview::-webkit-scrollbar-track {
-	background: #f1f1f1;
-	border-radius: 4px;
+  background: #f1f1f1;
+  border-radius: 4px;
 }
 
 .code-preview::-webkit-scrollbar-thumb {
-	background: #888;
-	border-radius: 4px;
+  background: #888;
+  border-radius: 4px;
 }
 
 .code-preview::-webkit-scrollbar-thumb:hover {
-	background: #555;
+  background: #555;
 }
 
 .highlight-animation {
-	animation: highlight 0.5s ease-in-out;
+  animation: highlight 0.5s ease-in-out;
 }
 
 @keyframes highlight {
-	0% {
-		background-color: transparent;
-	}
+  0% {
+    background-color: transparent;
+  }
 
-	50% {
-		background-color: rgba(255, 255, 0, 0.2);
-	}
+  50% {
+    background-color: rgba(255, 255, 0, 0.2);
+  }
 
-	100% {
-		background-color: transparent;
-	}
+  100% {
+    background-color: transparent;
+  }
 }
 
-[class^="highlight-"] {
-	position: relative;
-	border-radius: 2px;
+[class^='highlight-'] {
+  position: relative;
+  border-radius: 2px;
 }
 
-[class^="highlight-"]::before {
-	content: "";
-	position: absolute;
-	left: -2px;
-	right: -2px;
-	top: -1px;
-	bottom: -1px;
-	background-color: rgba(255, 182, 71, 0.3);
-	border-radius: 4px;
-	opacity: 0;
-	transition: opacity 0.5s ease-in-out;
-	pointer-events: none;
+[class^='highlight-']::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: -1px;
+  bottom: -1px;
+  background-color: rgba(255, 182, 71, 0.3);
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
 }
 
-.code-highlight [class^="highlight-"]::before {
-	opacity: 1;
+.code-highlight [class^='highlight-']::before {
+  opacity: 1;
 }
 
 .code-preview {
-	position: relative;
-	transition: all 0.5s ease-in-out;
+  position: relative;
+  transition: all 0.5s ease-in-out;
 }
 
 .preview-highlight nav {
-	position: relative;
+  position: relative;
 }
 
 .preview-highlight nav::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background-color: rgba(255, 182, 71, 0.3);
-	border-radius: 0.5rem;
-	opacity: 0;
-	animation: fadeInOut 1s ease-in-out;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 182, 71, 0.3);
+  border-radius: 0.5rem;
+  opacity: 0;
+  animation: fadeInOut 1s ease-in-out;
 }
 
 @keyframes fadeInOut {
-	0% {
-		opacity: 0;
-	}
+  0% {
+    opacity: 0;
+  }
 
-	20% {
-		opacity: 1;
-	}
+  20% {
+    opacity: 1;
+  }
 
-	80% {
-		opacity: 1;
-	}
+  80% {
+    opacity: 1;
+  }
 
-	100% {
-		opacity: 0;
-	}
+  100% {
+    opacity: 0;
+  }
 }
 
-.code-highlight [class^="highlight-"] {
-	animation: highlightOption 1s ease-in-out;
+.code-highlight [class^='highlight-'] {
+  animation: highlightOption 1s ease-in-out;
 }
 
 @keyframes highlightOption {
-	0% {
-		background-color: transparent;
-	}
+  0% {
+    background-color: transparent;
+  }
 
-	50% {
-		background-color: rgba(255, 182, 71, 0.3);
-	}
+  50% {
+    background-color: rgba(255, 182, 71, 0.3);
+  }
 
-	100% {
-		background-color: transparent;
-	}
+  100% {
+    background-color: transparent;
+  }
 }
 
 .code-preview *,
 nav * {
-	transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 nav {
-	transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-nav>div {
-	transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
-	will-change: transform;
+nav > div {
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
-nav[class*="justify-"]>div {
-	transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
-		margin 500ms cubic-bezier(0.4, 0, 0.2, 1);
+nav[class*='justify-'] > div {
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    margin 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 nav a {
-	transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .copy-button {
-	@apply transition-all duration-200;
+  @apply transition-all duration-200;
 }
 
 .copy-button:hover {
-	@apply bg-gray-200;
+  @apply bg-gray-200;
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
+  from {
+    opacity: 0;
+  }
 
-	to {
-		opacity: 1;
-	}
+  to {
+    opacity: 1;
+  }
 }
 
 .copied-feedback {
-	animation: fadeIn 0.2s ease-in-out;
+  animation: fadeIn 0.2s ease-in-out;
 }
 
 .highlighted-line {
-	background-color: rgba(255, 182, 71, 0.1);
-	display: block;
-	margin: -0.25rem -1.5rem;
-	padding: 0.25rem 1.5rem;
-	border-left: 2px solid rgba(255, 182, 71, 0.5);
-	animation: highlightFade 1s ease-in-out;
+  background-color: rgba(255, 182, 71, 0.1);
+  display: block;
+  margin: -0.25rem -1.5rem;
+  padding: 0.25rem 1.5rem;
+  border-left: 2px solid rgba(255, 182, 71, 0.5);
+  animation: highlightFade 1s ease-in-out;
 }
 
 @keyframes highlightFade {
-	0% {
-		background-color: rgba(255, 182, 71, 0.3);
-		border-left-color: rgba(255, 182, 71, 1);
-	}
+  0% {
+    background-color: rgba(255, 182, 71, 0.3);
+    border-left-color: rgba(255, 182, 71, 1);
+  }
 
-	100% {
-		background-color: rgba(255, 182, 71, 0.1);
-		border-left-color: rgba(255, 182, 71, 0.5);
-	}
+  100% {
+    background-color: rgba(255, 182, 71, 0.1);
+    border-left-color: rgba(255, 182, 71, 0.5);
+  }
 }
 
 /* 코드 하이라이트 스타일 수정 */
 .highlighted-code {
-	position: relative;
-	background-color: rgba(255, 182, 71, 0.3);
-	border-radius: 4px;
-	padding: 2px 4px;
-	margin: -2px -4px;
-	animation: codeFadeOut 1s ease-in-out forwards;
+  position: relative;
+  background-color: rgba(255, 182, 71, 0.3);
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  animation: codeFadeOut 1s ease-in-out forwards;
 }
 
 @keyframes codeFadeOut {
-	0% {
-		background-color: rgba(255, 182, 71, 0.5);
-		opacity: 1;
-	}
+  0% {
+    background-color: rgba(255, 182, 71, 0.5);
+    opacity: 1;
+  }
 
-	20% {
-		background-color: rgba(255, 182, 71, 0.45);
-		opacity: 0.95;
-	}
+  20% {
+    background-color: rgba(255, 182, 71, 0.45);
+    opacity: 0.95;
+  }
 
-	40% {
-		background-color: rgba(255, 182, 71, 0.4);
-		opacity: 0.9;
-	}
+  40% {
+    background-color: rgba(255, 182, 71, 0.4);
+    opacity: 0.9;
+  }
 
-	60% {
-		background-color: rgba(255, 182, 71, 0.3);
-		opacity: 0.7;
-	}
+  60% {
+    background-color: rgba(255, 182, 71, 0.3);
+    opacity: 0.7;
+  }
 
-	80% {
-		background-color: rgba(255, 182, 71, 0.2);
-		opacity: 0.4;
-	}
+  80% {
+    background-color: rgba(255, 182, 71, 0.2);
+    opacity: 0.4;
+  }
 
-	90% {
-		background-color: rgba(255, 182, 71, 0.1);
-		opacity: 0.2;
-	}
+  90% {
+    background-color: rgba(255, 182, 71, 0.1);
+    opacity: 0.2;
+  }
 
-	100% {
-		background-color: rgba(255, 182, 71, 0);
-		opacity: 0;
-	}
+  100% {
+    background-color: rgba(255, 182, 71, 0);
+    opacity: 0;
+  }
 }
 
 /* 하이라이트 요소가 사라질 때 공간 차지하지 않도록 */
 .highlighted-code:empty {
-	display: none;
+  display: none;
 }
