@@ -1,4 +1,5 @@
 // Code.tsx
+'use client';
 import { useEffect, useState } from 'react';
 import { codeToHtml } from 'shiki';
 
@@ -6,8 +7,8 @@ interface CodeProps {
   codeString: string;
   language?: string;
   theme?: string;
-  highlight: boolean;
-  gap: string;
+  highlight?: boolean;
+  gap?: string;
 }
 
 /**
@@ -24,8 +25,8 @@ export default function Code({
   language = 'tsx',
   theme = 'github-dark',
   highlight = false, // 기본값 false
-  gap = 'gap-10', // 기본 gap 값
-}: CodeProps) {
+}: // gap = 'gap-10', // 기본 gap 값
+CodeProps) {
   const [highlightedCode, setHighlightedCode] = useState('');
 
   useEffect(() => {
@@ -33,23 +34,25 @@ export default function Code({
       const html = await codeToHtml(codeString, {
         lang: language, // 원하는 언어 선택 가능
         theme: theme, // 원하는 테마로 변경 가능
-        decorations: [
-          {
-            start: codeString.indexOf(gap),
-            end: codeString.indexOf(gap) + gap.length,
-            properties: { class: 'highlighted-gap' }, // gap 강조
-          },
-        ],
+        // decorations: [
+        //   {
+        //     start: codeString.indexOf(gap),
+        //     end: codeString.indexOf(gap) + gap.length,
+        //     properties: { class: 'highlighted-gap' }, // gap 강조
+        //   },
+        // ],
       });
       setHighlightedCode(html);
     };
 
     loadHighlighter();
-  }, [codeString, language, theme, gap]);
+  }, [codeString, language, theme]);
 
   return (
     <div
-      className={`${highlight ? 'highlight-effect' : ''}`}
+      className={`!overflow-auto !whitespace-pre-wrap !break-words ${
+        highlight ? 'highlight-effect' : ''
+      }`}
       dangerouslySetInnerHTML={{ __html: highlightedCode }}
     />
   );
