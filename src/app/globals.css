@@ -128,3 +128,262 @@ pre.shiki {
 .highlighted-gap {
 	animation: highlight 0.5s ease-in-out forwards;
 }
+
+.code-preview {
+	@apply font-mono text-sm;
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+.code-preview pre {
+	margin: 0;
+	padding: 1.5rem;
+	background-color: #1e1e1e;
+	border-radius: 0.5rem;
+	font-size: 0.875rem;
+	line-height: 1.7;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.code-preview code {
+	display: block;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.code-preview [class*="className"] {
+	word-break: break-all;
+	max-width: 100%;
+}
+
+.code-preview::-webkit-scrollbar {
+	height: 8px;
+}
+
+.code-preview::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 4px;
+}
+
+.code-preview::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 4px;
+}
+
+.code-preview::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+.highlight-animation {
+	animation: highlight 0.5s ease-in-out;
+}
+
+@keyframes highlight {
+	0% {
+		background-color: transparent;
+	}
+
+	50% {
+		background-color: rgba(255, 255, 0, 0.2);
+	}
+
+	100% {
+		background-color: transparent;
+	}
+}
+
+[class^="highlight-"] {
+	position: relative;
+	border-radius: 2px;
+}
+
+[class^="highlight-"]::before {
+	content: "";
+	position: absolute;
+	left: -2px;
+	right: -2px;
+	top: -1px;
+	bottom: -1px;
+	background-color: rgba(255, 182, 71, 0.3);
+	border-radius: 4px;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+	pointer-events: none;
+}
+
+.code-highlight [class^="highlight-"]::before {
+	opacity: 1;
+}
+
+.code-preview {
+	position: relative;
+	transition: all 0.5s ease-in-out;
+}
+
+.preview-highlight nav {
+	position: relative;
+}
+
+.preview-highlight nav::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: rgba(255, 182, 71, 0.3);
+	border-radius: 0.5rem;
+	opacity: 0;
+	animation: fadeInOut 1s ease-in-out;
+}
+
+@keyframes fadeInOut {
+	0% {
+		opacity: 0;
+	}
+
+	20% {
+		opacity: 1;
+	}
+
+	80% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.code-highlight [class^="highlight-"] {
+	animation: highlightOption 1s ease-in-out;
+}
+
+@keyframes highlightOption {
+	0% {
+		background-color: transparent;
+	}
+
+	50% {
+		background-color: rgba(255, 182, 71, 0.3);
+	}
+
+	100% {
+		background-color: transparent;
+	}
+}
+
+.code-preview *,
+nav * {
+	transition: all 0.5s ease-in-out;
+}
+
+nav {
+	transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav>div {
+	transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+	will-change: transform;
+}
+
+nav[class*="justify-"]>div {
+	transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+		margin 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav a {
+	transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.copy-button {
+	@apply transition-all duration-200;
+}
+
+.copy-button:hover {
+	@apply bg-gray-200;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.copied-feedback {
+	animation: fadeIn 0.2s ease-in-out;
+}
+
+.highlighted-line {
+	background-color: rgba(255, 182, 71, 0.1);
+	display: block;
+	margin: -0.25rem -1.5rem;
+	padding: 0.25rem 1.5rem;
+	border-left: 2px solid rgba(255, 182, 71, 0.5);
+	animation: highlightFade 1s ease-in-out;
+}
+
+@keyframes highlightFade {
+	0% {
+		background-color: rgba(255, 182, 71, 0.3);
+		border-left-color: rgba(255, 182, 71, 1);
+	}
+
+	100% {
+		background-color: rgba(255, 182, 71, 0.1);
+		border-left-color: rgba(255, 182, 71, 0.5);
+	}
+}
+
+/* 코드 하이라이트 스타일 수정 */
+.highlighted-code {
+	position: relative;
+	background-color: rgba(255, 182, 71, 0.3);
+	border-radius: 4px;
+	padding: 2px 4px;
+	margin: -2px -4px;
+	animation: codeFadeOut 1s ease-in-out forwards;
+}
+
+@keyframes codeFadeOut {
+	0% {
+		background-color: rgba(255, 182, 71, 0.5);
+		opacity: 1;
+	}
+
+	20% {
+		background-color: rgba(255, 182, 71, 0.45);
+		opacity: 0.95;
+	}
+
+	40% {
+		background-color: rgba(255, 182, 71, 0.4);
+		opacity: 0.9;
+	}
+
+	60% {
+		background-color: rgba(255, 182, 71, 0.3);
+		opacity: 0.7;
+	}
+
+	80% {
+		background-color: rgba(255, 182, 71, 0.2);
+		opacity: 0.4;
+	}
+
+	90% {
+		background-color: rgba(255, 182, 71, 0.1);
+		opacity: 0.2;
+	}
+
+	100% {
+		background-color: rgba(255, 182, 71, 0);
+		opacity: 0;
+	}
+}
+
+/* 하이라이트 요소가 사라질 때 공간 차지하지 않도록 */
+.highlighted-code:empty {
+	display: none;
+}
