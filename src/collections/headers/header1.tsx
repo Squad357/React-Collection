@@ -1,135 +1,158 @@
-// Header.tsx
 'use client';
 
-import Code from '@/components/Code';
-import Image from 'next/image';
+import CodePreview from '@/components/CodePreview';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import headers from '../../../public/logo/http-logo.svg';
 
-// 링크 리스트
-const LinkButton = [
-  { id: 1, name: '1번 버튼', link: '#', isOpen: true },
-  { id: 2, name: '2번 버튼', link: '#', isOpen: true },
-  { id: 3, name: '3번 버튼', link: '#', isOpen: true },
-  { id: 4, name: '4번 버튼', link: '#', isOpen: false },
-  { id: 5, name: '5번 버튼', link: '#', isOpen: false },
-];
-
-function Header() {
-  const [gap, setGap] = useState<string>('gap-10');
-  const [animate, setAnimate] = useState<boolean>(false);
-  const [highlight, setHighlight] = useState<boolean>(false); // 강조 상태 추가
-
-  const handleGapChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newGap = e.target.value;
-    setAnimate(true); // 애니메이션 시작
-    setGap(newGap);
-    setHighlight(true); // 강조 효과 시작
-
-    // 애니메이션 종료 후 상태 초기화
-    setTimeout(() => {
-      setAnimate(false);
-      setHighlight(false); // 강조 효과 종료
-    }, 300); // duration과 동일한 시간 설정
-  };
-
-  const codeString = `
-	<div class="flex ${gap}">  ${LinkButton.filter(item => item.isOpen)
-    .map(
-      item => `
-		<Link href="${item.link}" className="...">${item.name}</Link>  `,
-    )
-    .join('')}
-	</div>
-		`;
-
-  return (
-    <main className='border-4 border-black mt-20'>
-      <h1 className='text-5xl p-10'>Header</h1>
-      <div className='flex'>
-        <div className='m-auto w-[654px] h-[504px] border-dashed border-red-500 border-8 relative'>
-          <header className='absolute top-0 left-0 right-0 border-b-2 h-14 items-center m-auto flex p-2 justify-center w-full shadow-md border-4 border-black'>
-            <div className='flex justify-between w-full items-center px-1 m-auto max-w-[800px]'>
-              {/* 로고 이미지 */}
-              <div>
-                <Link href='#'>
-                  <Image
-                    src={headers}
-                    alt='홈페이지 로고'
-                    width={0}
-                    height={0}
-                    quality={100}
-                    priority
-                  />
-                </Link>
-              </div>
-              {/* 링크 버튼 리스트 */}
-              <div
-                className={`flex ${gap} transition-all duration-300 ${
-                  animate ? 'bg-orange-300 transform scale-105 opacity-75' : ''
-                }`}>
-                {LinkButton.filter(item => item.isOpen).map(item => (
-                  <Link
-                    key={item.id}
-                    href={item.link}
-                    className='p-2 rounded transition-colors duration-300 hover:bg-gray-400 hover:scale-95'>
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </header>
+function HeaderDemo() {
+  const HeaderComponent = ({ options }: { options: Record<string, string> }) => (
+    <header className={`
+      flex justify-between items-center 
+      ${options.padding} ${options.rounded} ${options.bgColor} ${options.shadow}
+    `}>
+      <div className="font-bold text-xl">Logo</div>
+      <nav className={`
+        flex ${options.gap} ${options.justify} 
+        p-2 rounded-md w-[500px] bg-white/50 backdrop-blur-sm
+        transition-all duration-500 ease-in-out
+      `}>
+        <div className="transition-all duration-500 ease-in-out transform">
+          <Link href="#" className="px-3 py-2 rounded bg-white hover:bg-gray-200 block">
+            Home
+          </Link>
         </div>
-        <div className='flex flex-col gap-10 p-5 border-red-400 border-4'>
-          <Code
-            codeString={codeString}
-            language='tsx'
-            theme='material-theme'
-            highlight={highlight}
-            gap={gap}
-          />
+        <div className="transition-all duration-500 ease-in-out transform">
+          <Link href="#" className="px-3 py-2 rounded bg-white hover:bg-gray-200 block">
+            About
+          </Link>
         </div>
-      </div>
-      <Options>
-        <HeaderOptional handleGapChange={handleGapChange} />
-      </Options>
-    </main>
+        <div className="transition-all duration-500 ease-in-out transform">
+          <Link href="#" className="px-3 py-2 rounded bg-white hover:bg-gray-200 block">
+            Contact
+          </Link>
+        </div>
+      </nav>
+    </header>
   );
-}
 
-function HeaderOptional({
-  handleGapChange,
-}: {
-  handleGapChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}) {
+  const generateCode = (options: Record<string, string>) => `
+  <header class="flex justify-between items-center 
+    ${options.padding} ${options.rounded} 
+    ${options.bgColor} ${options.shadow}">
+    <div class="font-bold text-xl">
+      Logo
+    </div>
+    <nav class="flex ${options.gap} ${options.justify} 
+      p-2 rounded-md w-[500px] bg-white/50">
+      <Link href="#" class="px-3 py-2 rounded bg-white hover:bg-gray-200">
+        Home
+      </Link>
+      <Link href="#" class="px-3 py-2 rounded bg-white hover:bg-gray-200">
+        About
+      </Link>
+      <Link href="#" class="px-3 py-2 rounded bg-white hover:bg-gray-200">
+        Contact
+      </Link>
+    </nav>
+  </header>`.trim();
+
+  const codeOptions = [
+    {
+      key: 'gap',
+      label: 'Nav Gap',
+      value: 'gap-4',
+      options: [
+        { value: 'gap-1', label: 'Tiny (0.25rem)' },
+        { value: 'gap-2', label: 'Extra Small (0.5rem)' },
+        { value: 'gap-3', label: 'Small (0.75rem)' },
+        { value: 'gap-4', label: 'Medium (1rem)' },
+        { value: 'gap-5', label: 'Large (1.25rem)' },
+        { value: 'gap-6', label: 'Extra Large (1.5rem)' },
+        { value: 'gap-8', label: 'Double (2rem)' },
+        { value: 'gap-10', label: 'Triple (2.5rem)' },
+      ]
+    },
+    {
+      key: 'justify',
+      label: 'Nav Justify',
+      value: 'justify-start',
+      options: [
+        { value: 'justify-start', label: 'Start' },
+        { value: 'justify-center', label: 'Center' },
+        { value: 'justify-end', label: 'End' },
+        { value: 'justify-between', label: 'Space Between' },
+        { value: 'justify-around', label: 'Space Around' },
+        { value: 'justify-evenly', label: 'Space Evenly' },
+      ]
+    },
+    {
+      key: 'padding',
+      label: 'Container Padding',
+      value: 'p-4',
+      options: [
+        { value: 'p-2', label: 'Small' },
+        { value: 'p-3', label: 'Medium' },
+        { value: 'p-4', label: 'Large' },
+        { value: 'p-6', label: 'Extra Large' },
+        { value: 'p-8', label: 'Huge' },
+      ]
+    },
+    {
+      key: 'rounded',
+      label: 'Border Radius',
+      value: 'rounded-lg',
+      options: [
+        { value: 'rounded-none', label: 'None' },
+        { value: 'rounded-sm', label: 'Small' },
+        { value: 'rounded', label: 'Medium' },
+        { value: 'rounded-lg', label: 'Large' },
+        { value: 'rounded-xl', label: 'Extra Large' },
+        { value: 'rounded-2xl', label: 'Double Extra Large' },
+        { value: 'rounded-full', label: 'Full' },
+      ]
+    },
+    {
+      key: 'bgColor',
+      label: 'Background Color',
+      value: 'bg-gray-100',
+      options: [
+        { value: 'bg-gray-100', label: 'Gray 100' },
+        { value: 'bg-gray-50', label: 'Gray 50' },
+        { value: 'bg-white', label: 'White' },
+        { value: 'bg-blue-50', label: 'Blue 50' },
+        { value: 'bg-blue-100', label: 'Blue 100' },
+        { value: 'bg-green-50', label: 'Green 50' },
+        { value: 'bg-green-100', label: 'Green 100' },
+        { value: 'bg-yellow-50', label: 'Yellow 50' },
+        { value: 'bg-yellow-100', label: 'Yellow 100' },
+      ]
+    },
+    {
+      key: 'shadow',
+      label: 'Shadow',
+      value: 'shadow-none',
+      options: [
+        { value: 'shadow-none', label: 'None' },
+        { value: 'shadow-sm', label: 'Small' },
+        { value: 'shadow', label: 'Medium' },
+        { value: 'shadow-md', label: 'Large' },
+        { value: 'shadow-lg', label: 'Extra Large' },
+        { value: 'shadow-xl', label: 'Double Extra Large' },
+      ]
+    }
+  ];
+
   return (
-    <div className='border-4 border-green-600 p-4 rounded-lg shadow-md w-2/12'>
-      <label htmlFor='gap' className='block mb-2 text-lg font-semibold'>
-        링크버튼 간격
-      </label>
-      <select
-        id='gap'
-        defaultValue='gap-10'
-        onChange={handleGapChange}
-        className='border rounded-md p-2 w-auto'>
-        <option value='gap-2'>2</option>
-        <option value='gap-4'>4</option>
-        <option value='gap-6'>6</option>
-        <option value='gap-8'>8</option>
-        <option value='gap-10'>10</option>
-      </select>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-6">Header Component Demo</h1>
+      <CodePreview
+        component={HeaderComponent}
+        generateCode={generateCode}
+        codeOptions={codeOptions}
+        language="tsx"
+        theme="github-dark"
+      />
     </div>
   );
 }
 
-function Options({ children }: { children: React.ReactNode }) {
-  return (
-    <div className='p-4 bg-purple-300'>
-      <h3 className='m-3 text-3xl'>Optional</h3>
-      {children}
-    </div>
-  );
-}
-
-export default Header;
+export default HeaderDemo;
