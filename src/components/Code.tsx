@@ -34,13 +34,6 @@ CodeProps) {
       const html = await codeToHtml(codeString, {
         lang: language, // 원하는 언어 선택 가능
         theme: theme, // 원하는 테마로 변경 가능
-        // decorations: [
-        //   {
-        //     start: codeString.indexOf(gap),
-        //     end: codeString.indexOf(gap) + gap.length,
-        //     properties: { class: 'highlighted-gap' }, // gap 강조
-        //   },
-        // ],
       });
       setHighlightedCode(html);
     };

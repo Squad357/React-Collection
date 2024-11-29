@@ -177,38 +177,16 @@ function HeaderDemo() {
   ];
 
   return (
-    // <div className='container mx-auto p-4'>
-    //   <h1 className='text-2xl font-bold mb-6'>Header Component Demo</h1>
-    //   <CodePreview
-    //     component={HeaderComponent}
-    //     generateCode={generateCode}
-    //     codeOptions={codeOptions}
-    //     language='tsx'
-    //     theme='github-dark'
-    //   />
-    // </div>
-    <header className='absolute top-0 left-0 right-0 border-b-2 h-14 items-center m-auto flex p-2 justify-center w-full shadow-md border-4 border-black'>
-      <div className='flex justify-between w-full items-center px-1 m-auto max-w-[800px]'>
-        {/* 로고 이미지 */}
-        <div>
-          <h1 className='text-2xl font-bold mb-6'>Header Component Demo</h1>
-        </div>
-        {/* 링크 버튼 리스트 */}
-        <div
-          className={`flex ${gap} transition-all duration-300 ${
-            animate ? 'bg-orange-300 transform scale-105 opacity-75' : ''
-          }`}>
-          {LinkButton.filter(item => item.isOpen).map(item => (
-            <Link
-              key={item.id}
-              href={item.link}
-              className='p-2 rounded transition-colors duration-300 hover:bg-gray-400 hover:scale-95'>
-              {item.name}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </header>
+    <div className='container mx-auto p-4'>
+      <h1 className='text-2xl font-bold mb-6'>Header Component Demo</h1>
+      <CodePreview
+        component={HeaderComponent}
+        generateCode={generateCode}
+        codeOptions={codeOptions}
+        language='tsx'
+        theme='github-dark'
+      />
+    </div>
   );
 }
 
