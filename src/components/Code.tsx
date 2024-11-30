@@ -7,8 +7,6 @@ interface CodeProps {
   codeString: string;
   language?: string;
   theme?: string;
-  highlight?: boolean;
-  gap?: string;
 }
 
 /**
@@ -24,9 +22,7 @@ export default function Code({
   codeString,
   language = 'tsx',
   theme = 'github-dark',
-  highlight = false, // 기본값 false
-}: // gap = 'gap-10', // 기본 gap 값
-CodeProps) {
+}: CodeProps) {
   const [highlightedCode, setHighlightedCode] = useState('');
 
   useEffect(() => {
@@ -43,9 +39,7 @@ CodeProps) {
 
   return (
     <div
-      className={`!overflow-auto !whitespace-pre-wrap !break-words ${
-        highlight ? 'highlight-effect' : ''
-      }`}
+      className='overflow-auto rounded-lg'
       dangerouslySetInnerHTML={{ __html: highlightedCode }}
     />
   );
