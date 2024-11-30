@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import optionSlice from './redux';
+import { optionReducer } from './option';
 
 export const store = configureStore({
   reducer: {
-    option: optionSlice,
+    option: optionReducer,
   },
 });
 
