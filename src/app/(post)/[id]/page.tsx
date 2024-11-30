@@ -4,6 +4,7 @@ import { CategoryComponents } from '@/lib/categoryComponents';
 import Code from '@/components/Code';
 import { CodeStrings } from '@/lib/codeStrings';
 import { Data } from '@/data/data';
+import Options from '@/components/Options';
 
 type Params = Promise<{ id: string }>;
 
@@ -14,7 +15,7 @@ export default async function Post({ params }: { params: Params }) {
   const codeString = CodeStrings[id] || '';
 
   return (
-    <main className='max-w-[1400px] mx-auto flex h-full w-full pt-[74px]'>
+    <main className='max-w-[1400px] mx-auto flex h-full w-full pt-[74px] relative'>
       <SidenNavbar />
       <section className='px-10 py-5 w-full h-full p-5 relative'>
         <SidebarTrigger className='absolute top-0 left-0' />
@@ -30,6 +31,9 @@ export default async function Post({ params }: { params: Params }) {
               theme='material-theme'
             />
           </div>
+        </div>
+        <div className='w-[calc(100%-10px)] mt-10'>
+          <Options />
         </div>
       </section>
     </main>
