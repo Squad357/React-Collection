@@ -7,9 +7,6 @@ import { useDispatch } from 'react-redux';
 export default function Options() {
   const { optionList } = useOptionList();
   const dispatch = useDispatch();
-  // const { linkButton } = optionList;
-
-  console.log(optionList);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setDefaultCount(Number(e.target.value)));
@@ -25,7 +22,7 @@ export default function Options() {
               key={key}
               className='flex flex-col gap-2 p-4 bg-slate-100 rounded-lg'>
               <label htmlFor={key} className='font-medium'>
-                {key}
+                {value.name}
               </label>
               <select
                 name={key}

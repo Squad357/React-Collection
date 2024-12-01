@@ -1,4 +1,5 @@
 export interface linkButton {
+  name: string;
   defaultCount: number;
   items: linkButtonItem[];
 }
