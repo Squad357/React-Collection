@@ -1,7 +1,7 @@
 'use client';
 
 import { useOptionList } from '@/hooks/useOptionList';
-import { setDefaultCount } from '@/redux/option';
+import { setDefault } from '@/redux/option';
 import { useDispatch } from 'react-redux';
 
 export default function Options() {
@@ -9,7 +9,7 @@ export default function Options() {
   const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setDefaultCount(Number(e.target.value)));
+    dispatch(setDefault(Number(e.target.value)));
   };
 
   return (
@@ -22,13 +22,13 @@ export default function Options() {
               key={key}
               className='flex flex-col gap-2 p-4 bg-slate-100 rounded-lg'>
               <label htmlFor={key} className='font-medium'>
-                {value.name}
+                {value.label}
               </label>
               <select
                 name={key}
                 id={key}
                 className='p-2 border rounded-md bg-white'
-                value={value.defaultCount}
+                value={value.default}
                 onChange={handleChange}>
                 {value.items.map((item, index) => (
                   <option key={item.id} value={item.id}>

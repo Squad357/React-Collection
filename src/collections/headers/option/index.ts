@@ -1,7 +1,7 @@
 export const optionList = {
   linkButton: {
-    name: '버튼 갯수',
-    defaultCount: 3,
+    label: '버튼 갯수',
+    default: 3,
     items: [
       {
         id: 1,

@@ -4,7 +4,8 @@ import { OptionList } from '@/types/optionList';
 const initialState: OptionList = {
   optionList: {
     linkButton: {
-      defaultCount: 0,
+      label: '',
+      default: 0,
       items: [],
     },
   },
@@ -17,13 +18,13 @@ export const optionSlices = createSlice({
     setOptionList: (state, action) => {
       state.optionList = action.payload;
     },
-    setDefaultCount: (state, action) => {
+    setDefault: (state, action) => {
       if (state.optionList.linkButton) {
-        state.optionList.linkButton.defaultCount = action.payload;
+        state.optionList.linkButton.default = action.payload;
       }
     },
   },
 });
 
-export const { setOptionList, setDefaultCount } = optionSlices.actions;
+export const { setOptionList, setDefault } = optionSlices.actions;
 export const optionReducer = optionSlices.reducer;

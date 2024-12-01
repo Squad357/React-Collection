@@ -10,7 +10,7 @@ export default function Header1() {
     optionList: { linkButton },
     isLoading,
   } = useOptionList(optionList);
-  const animate = useAnimation(linkButton?.defaultCount);
+  const animate = useAnimation(linkButton?.default);
 
   if (isLoading) {
     return (
@@ -36,7 +36,7 @@ export default function Header1() {
         <h1 className='text-2xl font-bold p-2'>Logo</h1>
       </div>
       <nav className='flex gap-2'>
-        {linkButton?.items.slice(0, linkButton.defaultCount).map(item => (
+        {linkButton?.items.slice(0, linkButton.default).map(item => (
           <Link
             key={item.id}
             href={item.link}
