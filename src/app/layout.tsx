@@ -1,8 +1,8 @@
+import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
-import Header from '@/components/layout/Header';
 
 const montserrat = Montserrat({
   preload: false,
