@@ -1,5 +1,3 @@
-import SidenNavbar from '@/components/layout/SideNavbar';
-import { SidebarTrigger } from '@/components/ui/sidebar';
 import { CategoryComponents } from '@/lib/categoryComponents';
 import Code from '@/components/Code';
 import { CodeStrings } from '@/lib/codeStrings';
@@ -15,29 +13,21 @@ export default async function Post({ params }: { params: Params }) {
   const codeString = CodeStrings[id] || '';
 
   return (
-    <main className='max-w-[1400px] mx-auto flex h-full w-full pt-[74px] relative'>
-      <SidenNavbar />
-      <section className='px-10 py-5 w-full h-full p-5 relative'>
-        <SidebarTrigger className='absolute top-0 left-0' />
-        <h1 className='pt-7 pb-16 text-4xl'>{title}</h1>
-        <div className='flex justify-between h-[540px]'>
-          <div className='flex items-center justify-center w-[calc(50%-5px)] h-full bg-muted rounded-md'>
-            <Component />
-          </div>
-
-          <div className='w-[calc(50%-5px)] h-full border border-muted rounded-md overflow-auto'>
-            <Code
-              codeString={codeString}
-              language='tsx'
-              theme='material-theme'
-            />
-          </div>
+    <main className='max-w-[1400px] mx-auto h-full w-full pt-4 relative'>
+      <h1 className='pt-7 pb-16 text-4xl'>{title}</h1>
+      <div className='flex justify-between h-[540px]'>
+        <div className='flex items-center justify-center w-[calc(50%-5px)] h-full bg-muted rounded-md'>
+          <Component />
         </div>
 
-        <div className='mt-10'>
-          <Options />
+        <div className='w-[calc(50%-5px)] h-full border border-muted rounded-md overflow-auto'>
+          <Code codeString={codeString} language='tsx' theme='material-theme' />
         </div>
-      </section>
+      </div>
+
+      <div className='mt-10'>
+        <Options />
+      </div>
     </main>
   );
 }
