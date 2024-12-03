@@ -5,11 +5,11 @@ import Code from '@/components/Code';
 import { CodeStrings } from '@/lib/codeStrings';
 import { Data } from '@/data/data';
 
-type Params = Promise<{ id: string }>;
+type Params = Promise<{ id: number }>;
 
 export default async function Post({ params }: { params: Params }) {
   const { id } = await params;
-  const title = Data.find(item => item.id === id)?.title;
+  const title = Data.find(item => item.id == id)?.title;
   const Component = CategoryComponents[id];
   const codeString = CodeStrings[id] || '';
 
