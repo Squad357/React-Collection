@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -171,7 +173,7 @@ const data = {
   ],
 };
 
-export default function SidenNavbar() {
+export default function SideNavbar() {
   return (
     <Sidebar collapsible='icon'>
       <SidebarContent>
