@@ -1,7 +1,7 @@
 'use client';
 
 import { useOptionList } from '@/hooks/useOptionList';
-import { setDefault } from '@/redux/option';
+import { setLinkButtonDefault, setLinkButtonGapDefault } from '@/redux/option';
 import { useDispatch } from 'react-redux';
 
 export default function Options() {
@@ -9,8 +9,17 @@ export default function Options() {
   const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setDefault(Number(e.target.value)));
+    switch (e.target.name) {
+      case 'linkButton':
+        dispatch(setLinkButtonDefault(Number(e.target.value)));
+        break;
+      case 'linkButtonGap':
+        dispatch(setLinkButtonGapDefault(Number(e.target.value)));
+        break;
+    }
   };
+
+  console.log(optionList);
 
   return (
     <div>
@@ -32,7 +41,7 @@ export default function Options() {
                 onChange={handleChange}>
                 {value.items.map((item, index) => (
                   <option key={item.id} value={item.id}>
-                    {item.id} 개
+                    {item.option}
                   </option>
                 ))}
               </select>

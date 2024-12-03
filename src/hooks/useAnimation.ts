@@ -1,3 +1,4 @@
+import { OptionList } from '@/types/optionList';
 import { useState, useEffect } from 'react';
 
 export const useAnimation = (dependency: any) => {

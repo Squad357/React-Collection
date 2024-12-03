@@ -8,6 +8,11 @@ const initialState: OptionList = {
       default: 0,
       items: [],
     },
+    linkButtonGap: {
+      label: '',
+      default: 0,
+      items: [],
+    },
   },
 };
 
@@ -18,13 +23,19 @@ export const optionSlices = createSlice({
     setOptionList: (state, action) => {
       state.optionList = action.payload;
     },
-    setDefault: (state, action) => {
+    setLinkButtonDefault: (state, action) => {
       if (state.optionList.linkButton) {
         state.optionList.linkButton.default = action.payload;
+      }
+    },
+    setLinkButtonGapDefault: (state, action) => {
+      if (state.optionList.linkButtonGap) {
+        state.optionList.linkButtonGap.default = action.payload;
       }
     },
   },
 });
 
-export const { setOptionList, setDefault } = optionSlices.actions;
+export const { setOptionList, setLinkButtonDefault, setLinkButtonGapDefault } =
+  optionSlices.actions;
 export const optionReducer = optionSlices.reducer;

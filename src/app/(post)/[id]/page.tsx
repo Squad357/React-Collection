@@ -24,7 +24,8 @@ export default async function Post({ params }: { params: Params }) {
           <div className='w-[calc(50%-5px)] h-full bg-muted rounded-md'>
             <Component />
           </div>
-          <div className='w-[calc(50%-5px)] h-full border border-muted rounded-md'>
+
+          <div className='w-[calc(50%-5px)] h-full border border-muted rounded-md overflow-auto'>
             <Code
               codeString={codeString}
               language='tsx'
@@ -32,6 +33,7 @@ export default async function Post({ params }: { params: Params }) {
             />
           </div>
         </div>
+
         <div className='w-[calc(100%-10px)] mt-10'>
           <Options />
         </div>
