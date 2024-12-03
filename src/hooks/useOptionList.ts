@@ -7,34 +7,26 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export function useOptionList<T>(initialState?: T) {
   const dispatch = useDispatch();
-  const [isInitialized, setIsInitialized] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // 초기값 설정
+  // 초기값이 있을 때만 설정
   useEffect(() => {
+    if (!initialState) return;
+
     const initializeState = async () => {
       try {
         setIsLoading(true);
-        if (!isInitialized) {
-          await dispatch(setOptionList(initialState));
-          setIsInitialized(true);
-        }
-      } catch (error) {
-        console.error('상태 초기화 중 오류 발생:', error);
+        await dispatch(setOptionList(initialState));
       } finally {
         setIsLoading(false);
       }
     };
 
-    if (initialState) {
-      initializeState();
-    }
-  }, [dispatch, initialState, isInitialized]);
+    initializeState();
+  }, [dispatch, initialState]);
 
   // Redux 상태 가져오기
-  const optionList = useSelector(
-    (state: RootState) => state.option.optionList ?? initialState,
-  );
+  const optionList = useSelector((state: RootState) => state.option);
 
   return { optionList, isLoading };
 }

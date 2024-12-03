@@ -1,14 +1,28 @@
-import { linkButton } from './linkButton';
-import { linkButtonGap } from './linkButtonGap';
-
 /**
  * 옵션 리스트
- * @interface OptionList
- * @property {linkButton} linkButton - 버튼 갯수
+ * @type OptionList
  */
-export interface OptionList {
-  optionList: {
-    linkButton?: linkButton;
-    linkButtonGap?: linkButtonGap;
+export type OptionList = Option[];
+
+/**
+ * 옵션 리스트 > 옵션
+ * @interface Option
+ */
+export interface Option {
+  label: string;
+  default: number | string;
+  items: Item[];
+}
+
+/**
+ * 옵션 리스트 > 옵션 > 아이템
+ * @interface Item
+ */
+export interface Item {
+  id: number;
+  name: number | string;
+  optionValue: string;
+  extra?: {
+    tag?: string;
   };
 }
