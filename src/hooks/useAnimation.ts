@@ -1,5 +1,4 @@
-import { OptionList } from '@/types/optionList';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useAnimation = (dependency: any) => {
   const [animate, setAnimate] = useState(false);
@@ -9,7 +8,7 @@ export const useAnimation = (dependency: any) => {
 
     const timer = setTimeout(() => {
       setAnimate(false);
-    }, 1000);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, [dependency]);
