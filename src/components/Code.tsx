@@ -39,7 +39,7 @@ export default function Code({
 
   return (
     <div
-      className='overflow-auto rounded-lg'
+      className='w-full h-full overflow-auto rounded-lg'
       dangerouslySetInnerHTML={{ __html: highlightedCode }}
     />
   );
