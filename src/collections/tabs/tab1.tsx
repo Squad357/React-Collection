@@ -38,7 +38,7 @@ export default function Tab1() {
   };
 
   return (
-    <div className='mx-auto w-11/12 translate-y-full'>
+    <div className='mx-auto w-11/12'>
       <ul className='flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-[#D4F6FF] border-t-4 border-x-4 border-[#D4F6FF] rounded-t-sm'>
         {tabs
           .filter(item => item.isOpen)
@@ -162,7 +162,7 @@ export default function Tab1() {
                   currentTab === i
                     ? 'bg-white rounded-t-sm'
                     : 'py-2'
-                }}
+                }\`}
                 onClick={() => handleSelectTab(i)}>
                 {tab.title}
               </button>
@@ -177,9 +177,3 @@ export default function Tab1() {
   );
 }
 `;
-
-export const createOption = (): Record<string, string> =>
-  CodeOption.reduce((acc, curr) => {
-    acc[curr.key] = curr.value;
-    return acc;
-  }, {} as Record<string, string>);
