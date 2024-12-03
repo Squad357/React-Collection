@@ -1,7 +1,8 @@
 'use client';
 
 import { useOptionList } from '@/hooks/useOptionList';
-import { setLinkButtonDefault, setLinkButtonGapDefault } from '@/redux/option';
+import { setOptionDefault } from '@/redux/option';
+import { Item, Option } from '@/types/optionList';
 import { useDispatch } from 'react-redux';
 
 export default function Options() {
@@ -9,44 +10,54 @@ export default function Options() {
   const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    switch (e.target.name) {
-      case 'linkButton':
-        dispatch(setLinkButtonDefault(Number(e.target.value)));
+    const type = e.target.name;
+
+    switch (type) {
+      case '버튼 갯수':
+        dispatch(
+          setOptionDefault({
+            optionId: 0,
+            defaultValue: e.target.value,
+          }),
+        );
         break;
-      case 'linkButtonGap':
-        dispatch(setLinkButtonGapDefault(Number(e.target.value)));
+
+      case '버튼 간격':
+        dispatch(
+          setOptionDefault({
+            optionId: 1,
+            defaultValue: e.target.value,
+          }),
+        );
         break;
     }
   };
-
-  console.log(optionList);
 
   return (
     <div>
       <h1 className='text-2xl font-semibold'>Options</h1>
       <div className='grid grid-cols-4 gap-4 mt-4 p-4 rounded-lg bg-stone-200'>
-        {optionList &&
-          Object.entries(optionList).map(([key, value]) => (
-            <div
-              key={key}
-              className='flex flex-col gap-2 p-4 bg-slate-100 rounded-lg'>
-              <label htmlFor={key} className='font-medium'>
-                {value.label}
-              </label>
-              <select
-                name={key}
-                id={key}
-                className='p-2 border rounded-md bg-white'
-                value={value.default}
-                onChange={handleChange}>
-                {value.items.map((item, index) => (
-                  <option key={item.id} value={item.id}>
-                    {item.option}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
+        {optionList.map((option: Option) => (
+          <div
+            key={option.label}
+            className='flex flex-col gap-2 p-4 bg-slate-100 rounded-lg'>
+            <label htmlFor={option.label} className='font-medium'>
+              {option.label}
+            </label>
+            <select
+              id={option.label}
+              name={option.label}
+              className='p-2 border rounded-md bg-white'
+              value={option.default}
+              onChange={handleChange}>
+              {option.items.map((item: Item) => (
+                <option key={item.id} value={item.name}>
+                  {item.optionValue}
+                </option>
+              ))}
+            </select>
+          </div>
+        ))}
       </div>
     </div>
   );
