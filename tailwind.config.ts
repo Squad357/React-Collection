@@ -69,6 +69,20 @@ const config: Config = {
       },
     },
   },
+  safelist: [
+    {
+      pattern: /bg-(sky|pink|purple)-(100|200|300|400)/,
+    },
+    {
+      pattern: /border-(sky|pink|purple)-(100|200|300|400)/,
+    },
+    {
+      pattern: /rounded-t-(none|sm|lg|xl|2xl|full)/,
+    },
+    {
+      pattern: /shadow-(none|sm|md|lg|xl)/,
+    },
+  ],
   plugins: [require('tailwindcss-animate')],
 };
 export default config;
