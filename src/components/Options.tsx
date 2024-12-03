@@ -23,13 +23,11 @@ export default function Options() {
 
   return (
     <div>
-      <h1 className='text-2xl font-semibold'>Options</h1>
-      <div className='grid grid-cols-4 gap-4 mt-4 p-4 rounded-lg bg-stone-200'>
+      <h1 className='text-2xl font-medium'>Options</h1>
+      <div className='grid grid-cols-4 gap-4 mt-4 p-4 rounded-lg border'>
         {optionList &&
           Object.entries(optionList).map(([key, value]) => (
-            <div
-              key={key}
-              className='flex flex-col gap-2 p-4 bg-slate-100 rounded-lg'>
+            <div key={key} className='flex flex-col gap-2 p-4 rounded-lg'>
               <label htmlFor={key} className='font-medium'>
                 {value.label}
               </label>
