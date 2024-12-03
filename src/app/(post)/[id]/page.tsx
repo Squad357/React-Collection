@@ -6,11 +6,11 @@ import { CodeStrings } from '@/lib/codeStrings';
 import { Data } from '@/data/data';
 import Options from '@/components/Options';
 
-type Params = Promise<{ id: string }>;
+type Params = Promise<{ id: number }>;
 
 export default async function Post({ params }: { params: Params }) {
   const { id } = await params;
-  const title = Data.find(item => item.id === id)?.title;
+  const title = Data.find(item => item.id == id)?.title;
   const Component = CategoryComponents[id];
   const codeString = CodeStrings[id] || '';
 
@@ -21,7 +21,7 @@ export default async function Post({ params }: { params: Params }) {
         <SidebarTrigger className='absolute top-0 left-0' />
         <h1 className='pt-7 pb-16 text-4xl'>{title}</h1>
         <div className='flex justify-between h-[540px]'>
-          <div className='w-[calc(50%-5px)] h-full bg-muted rounded-md'>
+          <div className='flex items-center justify-center w-[calc(50%-5px)] h-full bg-muted rounded-md'>
             <Component />
           </div>
 
@@ -34,7 +34,7 @@ export default async function Post({ params }: { params: Params }) {
           </div>
         </div>
 
-        <div className='w-[calc(100%-10px)] mt-10'>
+        <div className='mt-10'>
           <Options />
         </div>
       </section>

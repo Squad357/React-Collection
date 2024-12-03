@@ -31,7 +31,7 @@ export default function Header1() {
   }
 
   return (
-    <header className='flex justify-between items-center border-2 border-black'>
+    <header className='flex justify-between w-full items-center border-2 border-black'>
       <div>
         <h1 className='text-2xl font-bold p-2'>Logo</h1>
       </div>
