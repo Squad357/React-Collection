@@ -1,12 +1,10 @@
 'use client';
 
-import { useOptionList } from '@/hooks/useOptionList';
 import { setOptionDefault } from '@/redux/option';
 import { Item, Option } from '@/types/optionList';
 import { useDispatch } from 'react-redux';
 
-export default function Options() {
-  const { optionList } = useOptionList();
+export default function Options({ optionList }: { optionList: Option[] }) {
   const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

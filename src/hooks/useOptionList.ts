@@ -2,6 +2,7 @@
 
 import { setOptionList } from '@/redux/option';
 import { RootState } from '@/redux/store';
+import { Option } from '@/types/optionList';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -26,7 +27,7 @@ export function useOptionList<T>(initialState?: T) {
   }, [dispatch, initialState]);
 
   // Redux 상태 가져오기
-  const optionList = useSelector((state: RootState) => state.option);
+  const optionList = useSelector((state: RootState): Option[] => state.option);
 
   return { optionList, isLoading };
 }

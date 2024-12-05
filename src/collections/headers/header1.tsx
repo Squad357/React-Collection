@@ -1,17 +1,23 @@
 'use client';
 
-import { useAnimation } from '@/hooks/useAnimation';
-import { useOptionList } from '@/hooks/useOptionList';
-import { Item } from '@/types/optionList';
+import { Item, Option } from '@/types/optionList';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { headerOptionList } from './option';
 
-export default function Header1() {
-  const { optionList, isLoading } = useOptionList(headerOptionList);
-  const buttonAnimate = useAnimation(optionList[0]?.default);
-  const gapAnimate = useAnimation(optionList[1]?.default);
+export interface PreviewProps {
+  optionList: Option[];
+  isLoading: boolean;
+  buttonAnimate: boolean;
+  gapAnimate: boolean;
+  [key: string]: boolean | Option[];
+}
 
+export default function Header1({
+  optionList,
+  isLoading,
+  buttonAnimate,
+  gapAnimate,
+}: PreviewProps) {
   if (isLoading) {
     return (
       <header className='flex justify-between items-center border-2 border-black'>
@@ -64,20 +70,3 @@ export default function Header1() {
     </header>
   );
 }
-
-export const CodeString = `<header className='flex justify-between items-center border-2 border-black'>
-	<div>
-		<h1 className='text-2xl font-bold p-2'>Logo</h1>
-	</div>
-	<nav className='flex gap-2'>
-		{linkButton?.filter(item => item.isOpen).map(item => (
-		<Link
-			key={item.id}
-			href={item.link}
-			className='hover:scale-105 hover:bg-gray-300 rounded-md m-2 p-2 active:scale-95'>
-			{item.name}
-		</Link>
-		))}
-	</nav>
-</header>
-`;
