@@ -6,9 +6,6 @@ import Link from 'next/link';
 
 export interface PreviewProps {
   optionList: Option[];
-  isLoading: boolean;
-  buttonAnimate: boolean;
-  gapAnimate: boolean;
   [key: string]: boolean | Option[];
 }
 

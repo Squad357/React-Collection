@@ -117,3 +117,23 @@ pre {
 .animate-highlight {
   animation: highlight 1s ease-in-out;
 }
+
+@keyframes codeHighlight {
+  0% {
+    background-color: transparent;
+  }
+
+  20% {
+    background-color: rgba(249, 247, 245, 0.638);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.animate-shiki-highlight {
+  animation: codeHighlight 1s ease-in-out;
+  padding: 4px;
+  border-radius: 8px;
+}
