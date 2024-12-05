@@ -1,11 +1,15 @@
 import { Option } from '@/types/optionList';
 
 export const CodeString = (optionList: Option[]) => {
+  // 버튼 간격 옵션
+  const gapOptionDefault =
+    optionList.find(option => option.label === '버튼 간격')?.default || 'gap-2';
+
   return `<header className='flex justify-between items-center border-2 border-black'>
 	<div>
 		<h1 className='text-2xl font-bold p-2'>Logo</h1>
 	</div>
-	<nav className='flex ${optionList[1]?.default}'>
+	<nav className='flex ${gapOptionDefault}'>
 		{linkButton?.filter(item => item.isOpen).map(item => (
 		<Link
 			key={item.id}
