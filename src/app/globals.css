@@ -121,19 +121,37 @@ pre {
 @keyframes codeHighlight {
   0% {
     background-color: transparent;
+    transform: scale(1);
   }
 
   20% {
     background-color: rgba(249, 247, 245, 0.638);
+    transform: scale(1.1);
+    transform: translate(0, -10px);
+  }
+
+  50% {
+    background-color: rgba(249, 247, 245, 0.638);
+    transform: scale(1.2);
+    transform: translate(0, -20px);
+  }
+
+  80% {
+    background-color: rgba(249, 247, 245, 0.638);
+    transform: scale(1.1);
+    transform: translate(0, -10px);
   }
 
   100% {
     background-color: transparent;
+    transform: scale(1);
   }
 }
 
 .animate-shiki-highlight {
-  animation: codeHighlight 1s ease-in-out;
+  animation: codeHighlight 0.5s ease-in-out;
   padding: 4px;
   border-radius: 8px;
+  display: inline-block;
+  transform-origin: center;
 }
