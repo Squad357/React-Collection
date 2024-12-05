@@ -1,4 +1,4 @@
-import { PreviewProps } from '@/collections/headers/header1';
+import { PreviewProps } from '@/types/props';
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
 

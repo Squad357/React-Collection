@@ -1,13 +1,8 @@
 'use client';
 
-import { Item, Option } from '@/types/optionList';
+import { PreviewProps } from '@/types/props';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-export interface PreviewProps {
-  optionList: Option[];
-  [key: string]: boolean | Option[];
-}
 
 export default function Header1({
   optionList,
@@ -47,7 +42,7 @@ export default function Header1({
           ${gapAnimate ? 'bg-red-200' : 'bg-slate-200'} rounded-lg`}>
         {optionList[0]?.items
           .slice(0, optionList[0]?.default as number)
-          .map((item: Item) => (
+          .map(item => (
             <Link key={item.id} href='#'>
               <motion.div
                 layoutId={`item-${item.id}`}
