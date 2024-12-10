@@ -5,20 +5,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/ui/collapsible';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
@@ -29,19 +22,10 @@ import {
 import {
   AudioWaveform,
   BookOpen,
-  Bot,
   ChevronRight,
   Command,
-  Folder,
-  Forward,
-  Frame,
   GalleryVerticalEnd,
-  Map,
-  MoreHorizontal,
-  PieChart,
   Settings2,
-  SquareTerminal,
-  Trash2,
 } from 'lucide-react';
 
 const data = {
@@ -69,9 +53,9 @@ const data = {
   ],
   navMain: [
     {
-      title: 'Playground',
+      title: 'Documentation',
       url: '#',
-      icon: SquareTerminal,
+      icon: BookOpen,
       isActive: true,
       items: [
         {
@@ -85,48 +69,6 @@ const data = {
         {
           title: 'Tab',
           url: '/category/tab',
-        },
-      ],
-    },
-    {
-      title: 'Models',
-      url: '#',
-      icon: Bot,
-      items: [
-        {
-          title: 'Genesis',
-          url: '#',
-        },
-        {
-          title: 'Explorer',
-          url: '#',
-        },
-        {
-          title: 'Quantum',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Documentation',
-      url: '#',
-      icon: BookOpen,
-      items: [
-        {
-          title: 'Introduction',
-          url: '#',
-        },
-        {
-          title: 'Get Started',
-          url: '#',
-        },
-        {
-          title: 'Tutorials',
-          url: '#',
-        },
-        {
-          title: 'Changelog',
-          url: '#',
         },
       ],
     },
@@ -152,23 +94,6 @@ const data = {
           url: '#',
         },
       ],
-    },
-  ],
-  projects: [
-    {
-      name: 'Design Engineering',
-      url: '#',
-      icon: Frame,
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '#',
-      icon: PieChart,
-    },
-    {
-      name: 'Travel',
-      url: '#',
-      icon: Map,
     },
   ],
 };
@@ -213,53 +138,6 @@ export default function SideNavbar() {
           </SidebarMenu>
         </SidebarGroup>
         {/* group-data-[collapsible=icon]:hidden */}
-        <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
-          <SidebarMenu>
-            {data.projects.map(item => (
-              <SidebarMenuItem key={item.name}>
-                <SidebarMenuButton asChild>
-                  <a href={item.url}>
-                    <item.icon />
-                    <span>{item.name}</span>
-                  </a>
-                </SidebarMenuButton>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <SidebarMenuAction showOnHover>
-                      <MoreHorizontal />
-                      <span className='sr-only'>More</span>
-                    </SidebarMenuAction>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    className='w-48 rounded-lg'
-                    side='bottom'
-                    align='end'>
-                    <DropdownMenuItem>
-                      <Folder className='text-muted-foreground' />
-                      <span>View Project</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Forward className='text-muted-foreground' />
-                      <span>Share Project</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                      <Trash2 className='text-muted-foreground' />
-                      <span>Delete Project</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </SidebarMenuItem>
-            ))}
-            <SidebarMenuItem>
-              <SidebarMenuButton className='text-sidebar-foreground/70'>
-                <MoreHorizontal className='text-sidebar-foreground/70' />
-                <span>More</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
