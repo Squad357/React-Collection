@@ -2,6 +2,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { codeToHtml } from 'shiki';
+import Modal from './layout/Modal';
 
 interface CodeProps {
   codeString: string;
@@ -24,6 +25,7 @@ export default function Code({
   theme = 'github-dark',
 }: CodeProps) {
   const [highlightedCode, setHighlightedCode] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const loadHighlighter = async () => {
@@ -38,9 +40,19 @@ export default function Code({
   }, [codeString, language, theme]);
 
   return (
-    <div
-      className='w-full h-full overflow-auto rounded-lg'
-      dangerouslySetInnerHTML={{ __html: highlightedCode }}
-    />
+    <>
+      <div
+        className='w-full h-full overflow-auto rounded-lg pointer-events-auto cursor-pointer'
+        dangerouslySetInnerHTML={{ __html: highlightedCode }}
+        onClick={() => setIsModalOpen(true)}
+      />
+      {isModalOpen && (
+        <Modal
+          isModalOpen={isModalOpen}
+          highlightedCode={highlightedCode}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
+    </>
   );
 }
