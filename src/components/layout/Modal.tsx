@@ -26,7 +26,7 @@ export default function Modal({
   }, [isModalOpen]);
 
   const handleClose = () => {
-    setTimeout(() => onClose(), 300); // 애니메이션 지속 시간과 동일한 지연 추가
+    setTimeout(() => onClose(), 300);
   };
 
   return (
