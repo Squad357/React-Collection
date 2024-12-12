@@ -1,36 +1,18 @@
 'use client';
 
-import { useOptionList } from '@/hooks/useOptionList';
 import { setOptionDefault } from '@/redux/option';
 import { Item, Option } from '@/types/optionList';
 import { useDispatch } from 'react-redux';
 
-export default function Options() {
-  const { optionList } = useOptionList();
+export default function Options({ optionList }: { optionList: Option[] }) {
   const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const type = e.target.name;
+    const { name: optionType, value: defaultValue } = e.target;
 
-    switch (type) {
-      case '버튼 갯수':
-        dispatch(
-          setOptionDefault({
-            optionId: 0,
-            defaultValue: e.target.value,
-          }),
-        );
-        break;
-
-      case '버튼 간격':
-        dispatch(
-          setOptionDefault({
-            optionId: 1,
-            defaultValue: e.target.value,
-          }),
-        );
-        break;
-    }
+    dispatch(
+      setOptionDefault({ optionType: optionType, defaultValue: defaultValue }),
+    );
   };
 
   return (
