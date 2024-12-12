@@ -1,5 +1,8 @@
 'use client';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useOptionList } from '@/hooks/useOptionList';
+import { tabOptionList } from './option';
 
 export interface Tab {
   title?: string;
@@ -8,6 +11,8 @@ export interface Tab {
 }
 
 export default function Tab1() {
+  const { optionList } = useOptionList(tabOptionList);
+
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabs: Tab[] = [
@@ -39,24 +44,28 @@ export default function Tab1() {
 
   return (
     <div className='mx-auto w-11/12'>
-      <ul className='flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-[#D4F6FF] border-t-4 border-x-4 border-[#D4F6FF] rounded-t-sm'>
+      <motion.ul
+        className={`flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-${optionList[0]?.default} border-t-4 border-x-4 border-${optionList[0]?.default} rounded-t${optionList[1]?.default}`}>
         {tabs
           .filter(item => item.isOpen)
           .map((tab, i) => (
             <li key={i} className='w-full'>
               <button
                 className={`w-full h-full ${
-                  currentTab === i ? ' bg-white rounded-t-sm' : 'py-2'
+                  currentTab === i
+                    ? ` bg-white rounded-t${optionList[1]?.default}`
+                    : 'py-2'
                 }`}
                 onClick={() => handleSelectTab(i)}>
                 {tab.title}
               </button>
             </li>
           ))}
-      </ul>
-      <div className='px-5 py-8 bg-white border-x-4 border-b-4 border-[#D4F6FF]'>
+      </motion.ul>
+      <motion.div
+        className={`px-5 py-8 bg-white border-x-4 border-b-4 border-${optionList[0]?.default}`}>
         <p>{tabs[currentTab].content}</p>
-      </div>
+      </motion.div>
     </div>
   );
 }

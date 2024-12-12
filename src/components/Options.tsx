@@ -17,12 +17,12 @@ export default function Options({ optionList }: { optionList: Option[] }) {
 
   return (
     <div>
-      <h1 className='text-2xl font-semibold'>Options</h1>
-      <div className='grid grid-cols-4 gap-4 mt-4 p-4 rounded-lg bg-stone-200'>
+      <h1 className='text-2xl font-medium'>Options</h1>
+      <div className='grid grid-cols-4 gap-4 mt-4 p-4 rounded-lg border'>
         {optionList.map((option: Option) => (
           <div
             key={option.label}
-            className='flex flex-col gap-2 p-4 bg-slate-100 rounded-lg'>
+            className='flex flex-col gap-2 p-4 rounded-lg'>
             <label htmlFor={option.label} className='font-medium'>
               {option.label}
             </label>
