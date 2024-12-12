@@ -11,8 +11,11 @@ export const optionSlices = createSlice({
       return action.payload;
     },
     setOptionDefault: (state, action) => {
-      const { optionId, defaultValue } = action.payload;
-      state[optionId].default = defaultValue;
+      const { optionType, defaultValue } = action.payload;
+      const option = state.find(item => item.label === optionType);
+      if (option) {
+        option.default = defaultValue;
+      }
     },
   },
 });

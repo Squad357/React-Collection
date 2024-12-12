@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useAnimation = (dependency: any) => {
+export const useAnimation = <T>(dependency: T) => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {

@@ -1,13 +1,16 @@
 // Code.tsx
 'use client';
-import { useEffect, useState } from 'react';
-import { codeToHtml } from 'shiki';
+import { useState } from 'react';
+import { useShikiCode } from '@/hooks/useShikiCode';
+import { Option } from '@/types/optionList';
 import Modal from './layout/Modal';
 
 interface CodeProps {
   codeString: string;
   language?: string;
   theme?: string;
+  optionList: Option[];
+  gapAnimate?: boolean;
 }
 
 /**
@@ -21,23 +24,12 @@ interface CodeProps {
  */
 export default function Code({
   codeString,
-  language = 'tsx',
-  theme = 'github-dark',
+  gapAnimate,
+  optionList,
 }: CodeProps) {
-  const [highlightedCode, setHighlightedCode] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const loadHighlighter = async () => {
-      const html = await codeToHtml(codeString, {
-        lang: language, // 원하는 언어 선택 가능
-        theme: theme, // 원하는 테마로 변경 가능
-      });
-      setHighlightedCode(html);
-    };
-
-    loadHighlighter();
-  }, [codeString, language, theme]);
+  const highlightedCode = useShikiCode(codeString, gapAnimate!, optionList);
 
   return (
     <>
