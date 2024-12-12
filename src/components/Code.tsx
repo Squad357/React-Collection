@@ -1,7 +1,9 @@
 // Code.tsx
 'use client';
+import { useState } from 'react';
 import { useShikiCode } from '@/hooks/useShikiCode';
 import { Option } from '@/types/optionList';
+import Modal from './layout/Modal';
 
 interface CodeProps {
   codeString: string;
@@ -25,12 +27,24 @@ export default function Code({
   gapAnimate,
   optionList,
 }: CodeProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const highlightedCode = useShikiCode(codeString, gapAnimate!, optionList);
 
   return (
-    <div
-      className='w-full h-full overflow-auto rounded-lg'
-      dangerouslySetInnerHTML={{ __html: highlightedCode }}
-    />
+    <>
+      <div
+        className='w-full h-full overflow-auto rounded-lg pointer-events-auto cursor-pointer'
+        dangerouslySetInnerHTML={{ __html: highlightedCode }}
+        onClick={() => setIsModalOpen(true)}
+      />
+      {isModalOpen && (
+        <Modal
+          isModalOpen={isModalOpen}
+          highlightedCode={highlightedCode}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
+    </>
   );
 }

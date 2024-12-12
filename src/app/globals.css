@@ -88,6 +88,23 @@ body {
     @apply bg-background text-foreground max-w-[1400px] my-0 mx-auto;
   }
 }
+
+@layer utilities {
+  .custom-scrollbar {
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 8px;
+      border-radius: 6px;
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+  }
+}
 pre {
   border-radius: 4px;
   display: flex;
