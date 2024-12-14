@@ -1,17 +1,9 @@
-// Code.tsx
 'use client';
-import { useState } from 'react';
-import { useShikiCode } from '@/hooks/useShikiCode';
-import { Option } from '@/types/optionList';
-import Modal from './layout/Modal';
 
-interface CodeProps {
-  codeString: string;
-  language?: string;
-  theme?: string;
-  optionList: Option[];
-  gapAnimate?: boolean;
-}
+import { useState } from 'react';
+import Modal from './layout/Modal';
+import { CodeProps } from '@/types/props/codeProps';
+import useShikiCode from '@/hooks/useShikiCode';
 
 /**
  * 코드 컴포넌트
@@ -22,14 +14,9 @@ interface CodeProps {
  * @example
  * <Code codeString={codeString} language='tsx' theme='material-theme' />
  */
-export default function Code({
-  codeString,
-  gapAnimate,
-  optionList,
-}: CodeProps) {
+export default function Code({ codeString, optionList, animate }: CodeProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const highlightedCode = useShikiCode(codeString, gapAnimate!, optionList);
+  const highlightedCode = useShikiCode(codeString, animate, optionList);
 
   return (
     <>

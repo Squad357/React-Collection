@@ -3,11 +3,11 @@ import { OptionList } from '@/types/optionList';
 export const headerOptionList: OptionList = [
   {
     label: '버튼 갯수',
-    default: 3,
+    default: '3',
     items: [
       {
         id: 1,
-        name: 1,
+        name: '1',
         optionValue: '1 개',
         extra: {
           tag: '버튼 1',
@@ -15,7 +15,7 @@ export const headerOptionList: OptionList = [
       },
       {
         id: 2,
-        name: 2,
+        name: '2',
         optionValue: '2 개',
         extra: {
           tag: '버튼 2',
@@ -23,7 +23,7 @@ export const headerOptionList: OptionList = [
       },
       {
         id: 3,
-        name: 3,
+        name: '3',
         optionValue: '3 개',
         extra: {
           tag: '버튼 3',
@@ -31,7 +31,7 @@ export const headerOptionList: OptionList = [
       },
       {
         id: 4,
-        name: 4,
+        name: '4',
         optionValue: '4 개',
         extra: {
           tag: '버튼 4',
@@ -39,7 +39,7 @@ export const headerOptionList: OptionList = [
       },
       {
         id: 5,
-        name: 5,
+        name: '5',
         optionValue: '5 개',
         extra: {
           tag: '버튼 5',
@@ -80,15 +80,69 @@ export const headerOptionList: OptionList = [
     ],
   },
 
-  // {
-  //   label: '버튼 색상',
-  //   default: 'bg-gray-300',
-  // },
+  {
+    label: '버튼 색상',
+    default: 'bg-gray-300',
+    items: [
+      {
+        id: 1,
+        name: 'bg-gray-100',
+        optionValue: 'bg-gray-100',
+      },
+      {
+        id: 2,
+        name: 'bg-gray-300',
+        optionValue: 'bg-gray-300',
+      },
+      {
+        id: 3,
+        name: 'bg-gray-500',
+        optionValue: 'bg-gray-500',
+      },
+      {
+        id: 4,
+        name: 'bg-gray-700',
+        optionValue: 'bg-gray-700',
+      },
+      {
+        id: 5,
+        name: 'bg-gray-900',
+        optionValue: 'bg-gray-900',
+      },
+    ],
+  },
 
-  // {
-  //   label: '버튼 크기',
-  //   default: 'text-sm',
-  // },
+  {
+    label: '버튼 크기',
+    default: 'text-basic',
+    items: [
+      {
+        id: 1,
+        name: 'text-xs',
+        optionValue: 'text-xs',
+      },
+      {
+        id: 2,
+        name: 'text-basic',
+        optionValue: 'text-basic',
+      },
+      {
+        id: 3,
+        name: 'text-lg',
+        optionValue: 'text-lg',
+      },
+      {
+        id: 4,
+        name: 'text-xl',
+        optionValue: 'text-xl',
+      },
+      {
+        id: 5,
+        name: 'text-2xl',
+        optionValue: 'text-2xl',
+      },
+    ],
+  },
 
   // {
   //   label: '버튼 텍스트 색상',

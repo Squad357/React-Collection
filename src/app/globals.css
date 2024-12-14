@@ -97,6 +97,7 @@ body {
       border-radius: 6px;
       background: transparent;
     }
+
     &::-webkit-scrollbar-thumb {
       height: 8px;
       background: #e5e7eb;
@@ -105,6 +106,7 @@ body {
     }
   }
 }
+
 pre {
   border-radius: 4px;
   display: flex;
@@ -138,37 +140,28 @@ pre {
 @keyframes codeHighlight {
   0% {
     background-color: transparent;
-    transform: scale(1);
   }
 
   20% {
-    background-color: rgba(249, 247, 245, 0.638);
-    transform: scale(1.1);
-    transform: translate(0, -10px);
+    background-color: rgba(249, 247, 245, 0.4);
   }
 
   50% {
-    background-color: rgba(249, 247, 245, 0.638);
-    transform: scale(1.2);
-    transform: translate(0, -20px);
+    background-color: rgba(249, 247, 245, 0.4);
   }
 
   80% {
-    background-color: rgba(249, 247, 245, 0.638);
-    transform: scale(1.1);
-    transform: translate(0, -10px);
+    background-color: rgba(249, 247, 245, 0.4);
   }
 
   100% {
     background-color: transparent;
-    transform: scale(1);
   }
 }
 
 .animate-shiki-highlight {
-  animation: codeHighlight 0.5s ease-in-out;
-  padding: 4px;
-  border-radius: 8px;
+  animation: codeHighlight 0.8s ease-in-out;
+  border-radius: 4px;
   display: inline-block;
   transform-origin: center;
 }

@@ -2,48 +2,45 @@ import { Option } from '@/types/optionList';
 import { useEffect, useState } from 'react';
 import { codeToHtml } from 'shiki';
 
-export function useShikiCode(
+interface Decoration {
+  start: number;
+  end: number;
+  properties: { class: string };
+}
+
+export default function useShikiCode(
   codeString: string,
-  gapAnimate: boolean,
+  animate: Record<string, boolean>,
   optionList: Option[],
   language: string = 'tsx',
   theme: string = 'github-dark',
-) {
-  const [highlightedCode, setHighlightedCode] = useState('');
+): string {
+  const [highlightedCode, setHighlightedCode] = useState<string>('');
 
   useEffect(() => {
-    // '버튼 간격'에 해당하는 옵션을 안전하게 찾기
-    const gapOptionDefault = (optionList.find(
-      option => option.label === '버튼 간격',
-    )?.default || 'gap-2') as string;
+    const decorations: Decoration[] = optionList.reduce(
+      (decoration: Decoration[], option: Option) => {
+        const optionDefault = option.default || '';
+        const optionLabel = option.label;
 
-    // LATER
-    // 애니메이션 적용을 위한 decorations 생성 함수
-    // const createDecoration = (animate: boolean, optionDefault: string) => {
-    //   return animate ? [{
-    //     start: codeString.indexOf(optionDefault),
-    //     end: codeString.indexOf(optionDefault) + optionDefault.length,
-    //     properties: { class: 'animate-shiki-highlight' },
-    //   }] : [];
-    // };
+        if (optionDefault && animate[optionLabel]) {
+          const start = codeString.indexOf(optionDefault);
+          const end = start + optionDefault.length;
 
-    // // decorations 배열 생성
-    // const decorations = [
-    //   ...createDecoration(gapAnimate, gapOptionDefault),
-    //   ...createDecoration(paddingAnimate, paddingOptionDefault),
-    // ];
-
-    const decorations =
-      gapAnimate && gapOptionDefault
-        ? [
-            {
-              start: codeString.indexOf(gapOptionDefault),
-              end:
-                codeString.indexOf(gapOptionDefault) + gapOptionDefault.length,
+          // 유효한 인덱스인지 확인
+          if (start !== -1) {
+            decoration.push({
+              start,
+              end,
               properties: { class: 'animate-shiki-highlight' },
-            },
-          ]
-        : [];
+            });
+          }
+        }
+
+        return decoration;
+      },
+      [],
+    );
 
     const loadHighlighter = async () => {
       const html = await codeToHtml(codeString, {
@@ -55,7 +52,7 @@ export function useShikiCode(
     };
 
     loadHighlighter();
-  }, [codeString, language, theme, gapAnimate, optionList]);
+  }, [codeString, language, theme, animate, optionList]);
 
   return highlightedCode;
 }

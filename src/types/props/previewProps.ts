@@ -4,5 +4,6 @@ import { Option } from '../optionList';
  */
 export interface PreviewProps {
   optionList: Option[];
-  [key: string]: boolean | Option[];
+  [key: string]: boolean | Option[] | Record<string, boolean>;
+  animate: Record<string, boolean>;
 }
