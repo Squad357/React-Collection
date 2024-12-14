@@ -26,8 +26,9 @@ export function useOptionList<T>(initialState?: T) {
     initializeState();
   }, [dispatch, initialState]);
 
-  // Redux 상태 가져오기
   const optionList = useSelector((state: RootState): Option[] => state.option);
 
+  // LATER
+  // 로딩 스켈레톤에 관한 처리 (isLoading을 Main 컴포넌트에서 가져감으로써 스켈레톤 ui 를 불러와야함)
   return { optionList, isLoading };
 }
