@@ -10,7 +10,7 @@ export type OptionList = Option[];
  */
 export interface Option {
   label: string;
-  default: number | string;
+  default: string;
   items: Item[];
 }
 

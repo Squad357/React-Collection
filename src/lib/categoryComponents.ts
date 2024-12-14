@@ -1,4 +1,4 @@
-import { PreviewProps } from '@/types/props';
+import { PreviewProps } from '@/types/props/previewProps';
 import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
 
