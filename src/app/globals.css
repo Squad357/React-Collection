@@ -107,6 +107,11 @@ body {
   }
 }
 
+.modal-content pre,
+.modal-content pre code {
+  width: 100%;
+}
+
 pre {
   border-radius: 4px;
   display: flex;

@@ -52,7 +52,7 @@ export default function Modal({
             className='relative w-2/3 rounded-2xl p-6 translate-y-0 '
             onClick={handlePreventClick}>
             <div
-              className='custom-scrollbar w-full max-h-[90vh] overflow-auto rounded-lg'
+              className='modal-content custom-scrollbar w-full max-h-[90vh] overflow-auto rounded-lg'
               dangerouslySetInnerHTML={{ __html: highlightedCode }}></div>
             <Cross2Icon
               onClick={handleClose}
