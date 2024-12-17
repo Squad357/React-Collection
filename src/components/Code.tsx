@@ -25,13 +25,11 @@ export default function Code({ codeString, optionList, animate }: CodeProps) {
         dangerouslySetInnerHTML={{ __html: highlightedCode }}
         onClick={() => setIsModalOpen(true)}
       />
-      {isModalOpen && (
-        <Modal
-          isModalOpen={isModalOpen}
-          highlightedCode={highlightedCode}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
+      <Modal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        highlightedCode={highlightedCode}
+      />
     </>
   );
 }
