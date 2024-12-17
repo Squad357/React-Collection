@@ -128,7 +128,7 @@ export const tabOptionList: OptionList = [
       },
       {
         id: 3,
-        name: '',
+        name: '-md',
         optionValue: 'Medium',
       },
       {
@@ -139,6 +139,38 @@ export const tabOptionList: OptionList = [
       {
         id: 5,
         name: '-xl',
+        optionValue: 'Extra Large',
+      },
+    ],
+  },
+
+  {
+    label: 'Shadow',
+    default: 'shadow-none',
+    items: [
+      {
+        id: 1,
+        name: 'shadow-none',
+        optionValue: 'None',
+      },
+      {
+        id: 2,
+        name: 'shadow-sm',
+        optionValue: 'Small',
+      },
+      {
+        id: 3,
+        name: 'shadow-md',
+        optionValue: 'Medium',
+      },
+      {
+        id: 4,
+        name: 'shadow-lg',
+        optionValue: 'Large',
+      },
+      {
+        id: 5,
+        name: 'shadow-xl',
         optionValue: 'Extra Large',
       },
     ],
