@@ -7,6 +7,6 @@ import { Option } from '@/types/optionList';
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export const CodeStrings: Record<string, Function | string> = {
   1: (optionList: Option[]) => header1CodeString(optionList),
-  3: tab1CodeString,
+  3: (optionList: Option[]) => tab1CodeString(optionList),
   4: tab2CodeString,
 };
