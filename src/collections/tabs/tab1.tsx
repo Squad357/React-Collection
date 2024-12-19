@@ -1,8 +1,8 @@
 'use client';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useOptionList } from '@/hooks/useOptionList';
-import { tabOptionList } from './option';
+import { useState } from 'react';
+import { Option } from '@/types/optionList';
+import { PreviewProps } from '@/types/props/previewProps';
 
 export interface Tab {
   title?: string;
@@ -10,9 +10,7 @@ export interface Tab {
   isOpen?: boolean;
 }
 
-export default function Tab1() {
-  const { optionList } = useOptionList(tabOptionList);
-
+export default function Tab1({ optionList, animate }: PreviewProps) {
   const [currentTab, setCurrentTab] = useState(0);
 
   const tabs: Tab[] = [
@@ -43,9 +41,16 @@ export default function Tab1() {
   };
 
   return (
-    <div className='mx-auto w-11/12'>
+    <div
+      className={`mx-auto w-11/12 ${optionList[2]?.default} ${
+        animate['Shadow'] ? 'shadow-[#ffb6474d]' : ''
+      }`}>
       <motion.ul
-        className={`flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-${optionList[0]?.default} border-t-4 border-x-4 border-${optionList[0]?.default} rounded-t${optionList[1]?.default}`}>
+        className={`flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-${
+          optionList[0]?.default
+        } border-t-4 border-x-4 border-${optionList[0]?.default} ${
+          animate['Border Radius'] ? 'animate-border-highlight' : ''
+        } rounded-t${optionList[1]?.default}`}>
         {tabs
           .filter(item => item.isOpen)
           .map((tab, i) => (
@@ -53,7 +58,7 @@ export default function Tab1() {
               <button
                 className={`w-full h-full ${
                   currentTab === i
-                    ? ` bg-white rounded-t${optionList[1]?.default}`
+                    ? `bg-white rounded-t${optionList[1]?.default}`
                     : 'py-2'
                 }`}
                 onClick={() => handleSelectTab(i)}>
@@ -70,63 +75,15 @@ export default function Tab1() {
   );
 }
 
-export const CodeOption = [
-  {
-    key: 'border',
-    label: 'Border Width',
-    value: '-4',
-    options: [
-      { value: '-2', label: 'Small' },
-      { value: '-4', label: 'Medium' },
-      { value: '-8', label: 'Large' },
-    ],
-  },
-  {
-    key: 'rounded',
-    label: 'Border Radius',
-    value: '-sm',
-    options: [
-      { value: '-none', label: 'None' },
-      { value: '-sm', label: 'Small' },
-      { value: '', label: 'Medium' },
-      { value: '-lg', label: 'Large' },
-      { value: '-xl', label: 'Extra Large' },
-      { value: '-2xl', label: 'Double Extra Large' },
-      { value: '-full', label: 'Full' },
-    ],
-  },
-  {
-    key: 'bgColor',
-    label: 'Background Color',
-    value: 'sky-200',
-    options: [
-      { value: 'sky-100', label: 'Sky 100' },
-      { value: 'sky-200', label: 'Sky 200' },
-      { value: 'sky-300', label: 'Sky 300' },
-      { value: 'pink-100', label: 'Pink 100' },
-      { value: 'pink-200', label: 'Pink 200' },
-      { value: 'pink-300', label: 'Pink 300' },
-      { value: 'purple-200', label: 'Purple 200' },
-      { value: 'purple-300', label: 'Purple 300' },
-      { value: 'purple-400', label: 'Purple 400' },
-    ],
-  },
-  {
-    key: 'shadow',
-    label: 'Shadow',
-    value: 'shadow-none',
-    options: [
-      { value: 'shadow-none', label: 'None' },
-      { value: 'shadow-sm', label: 'Small' },
-      { value: 'shadow', label: 'Medium' },
-      { value: 'shadow-md', label: 'Large' },
-      { value: 'shadow-lg', label: 'Extra Large' },
-      { value: 'shadow-xl', label: 'Double Extra Large' },
-    ],
-  },
-];
+export const CodeString = (optionList: Option[]) => {
+  const defaultOption = (label: string) =>
+    optionList.find(option => option.label === label)?.default || '';
 
-export const CodeString = `import { useState } from 'react';
+  const btnColorOptionDefault = defaultOption('버튼 색상');
+  const radiusOptionDefault = defaultOption('Border Radius');
+  const shadowOptionDefault = defaultOption('Shadow');
+
+  return `import { useState } from 'react';
 
 export default function Tab1() {
   const [currentTab, setCurrentTab] = useState(0);
@@ -159,9 +116,9 @@ export default function Tab1() {
   };
 
   return (
-    <div>
+    <div className='${shadowOptionDefault}'>
       <ul
-        className='flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-[#D4F6FF] border-t-4 border-x-4 border-[#D4F6FF] rounded-t-sm'>
+        className='flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-${btnColorOptionDefault} border-t-4 border-x-4 border-${btnColorOptionDefault} rounded-t${radiusOptionDefault}'>
         {tabs
           .filter(item => item.isOpen)
           .map((tab, i) => (
@@ -169,7 +126,7 @@ export default function Tab1() {
               <button
                 className={\`w-full h-full \${
                   currentTab === i
-                    ? 'bg-white rounded-t-sm'
+                    ? 'bg-white rounded-t${radiusOptionDefault}'
                     : 'py-2'
                 }\`}
                 onClick={() => handleSelectTab(i)}>
@@ -179,10 +136,11 @@ export default function Tab1() {
           ))}
       </ul>
       <div
-        className='px-5 py-8 bg-white border-x-4 border-b-4 border-[#D4F6FF]'>
+        className='px-5 py-8 bg-white border-x-4 border-b-4 border-${btnColorOptionDefault}'>
         <p>{tabs[currentTab].content}</p>
       </div>
     </div>
   );
 }
 `;
+};

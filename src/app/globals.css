@@ -107,6 +107,11 @@ body {
   }
 }
 
+.modal-content pre,
+.modal-content pre code {
+  min-width: 100%;
+}
+
 pre {
   border-radius: 4px;
   display: flex;
@@ -125,7 +130,7 @@ pre {
   }
 
   20% {
-    background-color: rgb(255, 182, 71, 0.3);
+    background-color: rgba(255, 182, 71, 0.3);
   }
 
   100% {
@@ -164,4 +169,22 @@ pre {
   border-radius: 4px;
   display: inline-block;
   transform-origin: center;
+}
+
+@keyframes borderHighlight {
+  0% {
+    border-color: transparent;
+  }
+
+  20% {
+    border-color: rgba(155, 155, 155, 0.6);
+  }
+
+  100% {
+    border-color: transparent;
+  }
+}
+
+.animate-border-highlight {
+  animation: borderHighlight 1s ease-in-out;
 }
