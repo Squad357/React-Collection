@@ -74,7 +74,13 @@ const config: Config = {
       pattern: /bg-(sky|pink|purple)-(100|200|300|400)/,
     },
     {
+      pattern: /text-(sky|pink|purple)-(100|200|300|400)/,
+    },
+    {
       pattern: /border-(sky|pink|purple)-(100|200|300|400)/,
+    },
+    {
+      pattern: /rounded-(none|sm|md|lg|xl|2xl|full)/,
     },
     {
       pattern: /rounded-t-(none|sm|md|lg|xl|2xl|full)/,
