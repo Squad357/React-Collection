@@ -1,4 +1,4 @@
-import Main from '@/components/Main';
+import Main from '@/app/(post)/[id]/Main';
 import { Data } from '@/data/data';
 
 type Params = Promise<{ id: number }>;

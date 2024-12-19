@@ -4,13 +4,14 @@ import { headerOptionList } from '@/collections/headers/option';
 import { useOptionList } from '@/hooks/useOptionList';
 import { CategoryComponents } from '@/lib/categoryComponents';
 import { CodeStrings } from '@/lib/codeStrings';
-import Code from './Code';
-import Options from './Options';
+import Code from '../../../components/Code';
+import Options from '../../../components/Options';
 import useAnimation from '@/hooks/useAnimation';
+import { tabOptionList } from '@/collections/tabs/option';
 
 export default function Main({ id }: { id: number }) {
   const Component = CategoryComponents[id];
-  const { optionList } = useOptionList(headerOptionList);
+  const { optionList } = useOptionList(tabOptionList);
   const animate = useAnimation(optionList);
 
   const codeString =
