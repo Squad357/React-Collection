@@ -81,6 +81,7 @@ export const CodeString = (optionList: Option[]) => {
 
   const btnColorOptionDefault = defaultOption('버튼 색상');
   const radiusOptionDefault = defaultOption('Border Radius');
+  const shadowOptionDefault = defaultOption('Shadow');
 
   return `import { useState } from 'react';
 
@@ -115,7 +116,7 @@ export default function Tab1() {
   };
 
   return (
-    <div className='${optionList[2]?.default}'>
+    <div className='${shadowOptionDefault}'>
       <ul
         className='flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-${btnColorOptionDefault} border-t-4 border-x-4 border-${btnColorOptionDefault} rounded-t${radiusOptionDefault}'>
         {tabs
