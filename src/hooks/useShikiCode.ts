@@ -24,14 +24,17 @@ export default function useShikiCode(
         const optionLabel = option.label;
 
         if (optionDefault && animate[optionLabel]) {
-          const start = codeString.indexOf(optionDefault);
-          const end = start + optionDefault.length;
+          const regex = new RegExp(`\\b${optionDefault}\\b`, 'g');
+          let match;
+
+          // const start = codeString.indexOf(optionDefault);
+          // const end = start + optionDefault.length;
 
           // 유효한 인덱스인지 확인
-          if (start !== -1) {
+          while ((match = regex.exec(codeString)) !== null) {
             decoration.push({
-              start,
-              end,
+              start: match.index,
+              end: match.index + optionDefault.length,
               properties: { class: 'animate-shiki-highlight' },
             });
           }
