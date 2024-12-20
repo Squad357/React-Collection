@@ -20,7 +20,7 @@ export default function Header() {
         <div className='flex items-center gap-4'>
           <Link href='#'>Button</Link>
           <Link href='#'>Button</Link>
-          <Link href='#'>Button</Link>
+          <Link href='/signup'>회원가입</Link>
         </div>
       </div>
     </header>
