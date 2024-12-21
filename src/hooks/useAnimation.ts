@@ -1,32 +1,44 @@
-import { Option } from '@/types/optionList';
-import { useState, useEffect, useRef } from 'react';
+import { OptionList } from '@/types/optionList';
+import { useEffect, useRef, useState } from 'react';
 
-export default function useAnimation(optionList: Option[]) {
+export default function useAnimation(optionList: OptionList) {
   // 초기 상태 설정
-  const initialAnimate = optionList.reduce(
-    (acc: Record<string, boolean>, option) => {
-      acc[option.label] = false;
-      return acc;
+  const initialAnimate = Object.keys(optionList).reduce(
+    (animate: Record<string, boolean>, key) => {
+      animate[optionList[key].label] = false;
+      return animate;
     },
-    {},
+    {} as Record<string, boolean>, // 타입 명시
   );
 
   const [animate, setAnimate] =
     useState<Record<string, boolean>>(initialAnimate);
-  const prevValuesRef = useRef(optionList.map(option => option.default));
+
+  const prevValuesRef = useRef<Record<string, string>>(
+    Object.keys(optionList).reduce((acc, key) => {
+      acc[optionList[key].label] = optionList[key].default;
+      return acc;
+    }, {} as Record<string, string>),
+  );
 
   useEffect(() => {
-    const currentValues = optionList.map(option => option.default);
-    const newAnimate: Record<string, boolean> = { ...animate };
+    // 현재 값 설정
+    const currentValues: Record<string, string> = Object.keys(
+      optionList,
+    ).reduce((acc, key) => {
+      acc[optionList[key].label] = optionList[key].default;
+      return acc;
+    }, {} as Record<string, string>);
 
+    const newAnimate: Record<string, boolean> = { ...animate };
     let hasChanged = false; // 변경 여부 플래그
 
     // 각 option의 이전 값과 현재 값을 비교
-    currentValues.forEach((value, index) => {
-      const label = optionList[index].label; // label을 통해 접근
-      if (prevValuesRef.current[index] !== value) {
-        newAnimate[label] = true; // 값이 변경되면 true로 설정
-        hasChanged = true; // 변경 여부 플래그를 true로 설정
+    Object.keys(optionList).forEach(key => {
+      const label = optionList[key].label;
+      if (prevValuesRef.current[label] !== currentValues[label]) {
+        newAnimate[label] = true;
+        hasChanged = true;
       }
     });
 
@@ -50,6 +62,5 @@ export default function useAnimation(optionList: Option[]) {
     // 클린업 함수: 타이머 해제
     return () => clearTimeout(timer);
   }, [optionList]);
-
   return animate;
 }

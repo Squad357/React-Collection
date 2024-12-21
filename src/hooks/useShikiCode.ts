@@ -1,29 +1,25 @@
-import { Option } from '@/types/optionList';
+import { Decoration, ShikiCodeProps } from '@/types/props/shikiCodeProps';
 import { useEffect, useState } from 'react';
 import { codeToHtml } from 'shiki';
 
-interface Decoration {
-  start: number;
-  end: number;
-  properties: { class: string };
-}
-
-export default function useShikiCode(
-  codeString: string,
-  animate: Record<string, boolean>,
-  optionList: Option[],
-  language: string = 'tsx',
-  theme: string = 'github-dark',
-): string {
+export default function useShikiCode({
+  codeString,
+  animate,
+  optionList,
+  language = 'tsx',
+  theme = 'github-dark',
+}: ShikiCodeProps): string {
   const [highlightedCode, setHighlightedCode] = useState<string>('');
 
   useEffect(() => {
-    const decorations: Decoration[] = optionList.reduce(
-      (decoration: Decoration[], option: Option) => {
+    const decorations: Decoration[] = Object.keys(optionList).reduce(
+      (decoration: Decoration[], key: string) => {
+        const option = optionList[key];
         const optionDefault = option.default || '';
         const optionLabel = option.label;
+        const noAnimation = option.animate;
 
-        if (optionDefault && animate[optionLabel]) {
+        if (noAnimation && optionDefault && animate[optionLabel]) {
           const start = codeString.indexOf(optionDefault);
           const end = start + optionDefault.length;
 
