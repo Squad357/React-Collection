@@ -1,9 +1,10 @@
 import { OptionList } from '@/types/optionList';
 
-export const headerOptionList: OptionList = [
-  {
+export const headerOptionList: OptionList = {
+  '버튼 갯수': {
     label: '버튼 갯수',
     default: '3',
+    animate: false,
     items: [
       {
         id: 1,
@@ -48,9 +49,10 @@ export const headerOptionList: OptionList = [
     ],
   },
 
-  {
+  '버튼 간격': {
     label: '버튼 간격',
     default: 'gap-2',
+    animate: true,
     items: [
       {
         id: 1,
@@ -80,9 +82,10 @@ export const headerOptionList: OptionList = [
     ],
   },
 
-  {
+  '버튼 색상': {
     label: '버튼 색상',
     default: 'bg-gray-300',
+    animate: true,
     items: [
       {
         id: 1,
@@ -112,9 +115,10 @@ export const headerOptionList: OptionList = [
     ],
   },
 
-  {
+  '버튼 크기': {
     label: '버튼 크기',
     default: 'text-basic',
+    animate: true,
     items: [
       {
         id: 1,
@@ -143,24 +147,4 @@ export const headerOptionList: OptionList = [
       },
     ],
   },
-
-  // {
-  //   label: '버튼 텍스트 색상',
-  //   default: 'text-black',
-  // },
-
-  // {
-  //   label: '버튼 텍스트 크기',
-  //   default: 'text-sm',
-  // },
-
-  // {
-  //   label: '버튼 텍스트 굵기',
-  //   default: 'font-normal',
-  // },
-
-  // {
-  //   label: '버튼 텍스트 대소문자',
-  //   default: 'capitalize',
-  // },
-];
+};

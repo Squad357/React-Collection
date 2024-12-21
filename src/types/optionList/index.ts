@@ -1,26 +1,29 @@
 /**
+ * @interface OptionList
  * 옵션 리스트
- * @type OptionList
  */
-export type OptionList = Option[];
-
-/**
- * 옵션 리스트 > 옵션
- * @interface Option
- */
-export interface Option {
-  label: string;
-  default: string;
-  items: Item[];
+export interface OptionList {
+  [key: string]: Option;
 }
 
 /**
- * 옵션 리스트 > 옵션 > 아이템
- * @interface Item
+ * @interface Option
+ * 옵션 리스트 > 옵션
  */
-export interface Item {
+interface Option {
+  label: string;
+  default: string;
+  animate: boolean;
+  items: OptionItem[];
+}
+
+/**
+ * @interface OptionItem
+ * 옵션 리스트 > 옵션 > 옵션 아이템
+ */
+export interface OptionItem {
   id: number;
-  name: number | string;
+  name: string;
   optionValue: string;
   extra?: {
     tag?: string;

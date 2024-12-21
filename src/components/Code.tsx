@@ -16,7 +16,7 @@ import useShikiCode from '@/hooks/useShikiCode';
  */
 export default function Code({ codeString, optionList, animate }: CodeProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const highlightedCode = useShikiCode(codeString, animate, optionList);
+  const highlightedCode = useShikiCode({ codeString, animate, optionList });
 
   return (
     <>
