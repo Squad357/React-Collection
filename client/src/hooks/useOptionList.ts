@@ -2,16 +2,18 @@
 
 import { setOptionList } from '@/redux/option';
 import { RootState } from '@/redux/store';
-import { Option } from '@/types/optionList';
+import { OptionList } from '@/types/optionList'; // OptionList 타입을 사용
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-export function useOptionList<T>(initialState?: T) {
+export function useOptionList<T extends OptionList>(initialState?: T) {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   // 초기값이 있을 때만 설정
   useEffect(() => {
+    if (initialState === null) return;
+
     if (!initialState) return;
 
     const initializeState = async () => {
@@ -26,9 +28,11 @@ export function useOptionList<T>(initialState?: T) {
     initializeState();
   }, [dispatch, initialState]);
 
-  const optionList = useSelector((state: RootState): Option[] => state.option);
+  const optionList = useSelector(
+    (state: RootState): OptionList => state.option,
+  );
 
   // LATER
-  // 로딩 스켈레톤에 관한 처리 (isLoading을 Main 컴포넌트에서 가져감으로써 스켈레톤 ui 를 불러와야함)
+  // 로딩 스켈레톤에 관한 처리 (isLoading을 Main 컴포넌트에서 가져감으로써 스켈레톤 UI를 불러와야함)
   return { optionList, isLoading };
 }

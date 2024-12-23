@@ -1,10 +1,10 @@
-import { Option } from '../optionList';
+import { OptionList } from '../optionList';
 
 export interface CodeProps {
   codeString: string;
   animate: Record<string, boolean>;
   language?: string;
   theme?: string;
-  optionList: Option[];
+  optionList: OptionList;
   gapAnimate?: boolean;
 }
