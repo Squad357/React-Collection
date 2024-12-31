@@ -21,7 +21,7 @@ router.put(
           .catch();
       })
       .normalizeEmail(),
-    body("password").trim().isLength({ min: 5 }),
+    body("password").trim().isLength({ min: 8 }),
   ],
   authController.signup,
 );
