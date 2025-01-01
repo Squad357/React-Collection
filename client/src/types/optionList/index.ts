@@ -10,7 +10,7 @@ export interface OptionList {
  * @interface Option
  * 옵션 리스트 > 옵션
  */
-interface Option {
+export interface Option {
   label: string;
   default: string;
   animate: boolean;
@@ -26,6 +26,6 @@ export interface OptionItem {
   name: string;
   optionValue: string;
   extra?: {
-    tag?: string;
+    [key: string]: string;
   };
 }
