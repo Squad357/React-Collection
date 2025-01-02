@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 import { Cross2Icon } from '@radix-ui/react-icons';
+import useCopyCode from '@/hooks/useCopyCode';
+import { HiCheck } from 'react-icons/hi';
 
 interface ModalProps {
   isModalOpen: boolean;
@@ -29,6 +31,8 @@ export default function Modal({
     e.stopPropagation();
   };
 
+  const { isCopied, handleCopyCode } = useCopyCode(highlightedCode);
+
   return (
     <AnimatePresence>
       {isModalOpen && (
@@ -56,6 +60,13 @@ export default function Modal({
               onClick={() => setIsModalOpen(false)}
               className='absolute top-6 right-[-20px] text-white w-8 h-8 cursor-pointer'
             />
+            <button
+              className={`absolute top-8 right-8 w-16 h-8 bg-[#24292e] text-white text-sm font-bold border rounded-full transition-all hover:bg-[#606060] ${
+                isCopied && 'bg-[#606060] cursor-default pointer-events-none'
+              }`}
+              onClick={handleCopyCode}>
+              {isCopied ? <HiCheck className='mx-auto w-6 h-6' /> : 'COPY'}
+            </button>
           </motion.div>
         </motion.div>
       )}
