@@ -1,4 +1,4 @@
-import Main from '@/app/(post)/[id]/Main';
+import PostContent from '@/app/(post)/[id]/PostContent';
 import { Data } from '@/data/data';
 
 type Params = Promise<{ id: number }>;
@@ -10,7 +10,7 @@ export default async function Post({ params }: { params: Params }) {
   return (
     <main className='max-w-[1400px] mx-auto h-full w-full pt-4 relative'>
       <h1 className='pt-7 pb-16 text-4xl'>{title}</h1>
-      <Main id={id} />
+      <PostContent id={id} />
     </main>
   );
 }

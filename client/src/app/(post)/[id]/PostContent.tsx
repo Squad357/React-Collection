@@ -9,7 +9,7 @@ import Options from '../../../components/Options';
 import useAnimation from '@/hooks/useAnimation';
 import { tabOptionList } from '@/collections/tabs/option';
 
-export default function Main({ id }: { id: number }) {
+export default function PostContent({ id }: { id: number }) {
   const Component = CategoryComponents[id];
   const { optionList } = useOptionList(tabOptionList);
   const animate = useAnimation(optionList);
@@ -26,7 +26,7 @@ export default function Main({ id }: { id: number }) {
           <Component optionList={optionList} animate={animate} />
         </div>
 
-        <div className='w-[calc(50%-5px)] h-full border border-muted rounded-md overflow-auto'>
+        <div className=' relative w-[calc(50%-5px)] h-full border border-muted rounded-md overflow-auto'>
           <Code
             codeString={codeString}
             animate={animate}
