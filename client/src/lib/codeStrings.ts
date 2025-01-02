@@ -9,4 +9,5 @@ export const CodeStrings: Record<string, Function | string> = {
   1: (optionList: OptionList) => header1CodeString(optionList),
   3: (optionList: OptionList) => tab1CodeString(optionList),
   4: tab2CodeString,
+  6: (optionList: Option[]) => button1CodeString(optionList),
 };
