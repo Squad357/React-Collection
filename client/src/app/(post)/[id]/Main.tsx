@@ -1,6 +1,5 @@
 'use client';
 
-import { headerOptionList } from '@/collections/headers/option';
 import { useOptionList } from '@/hooks/useOptionList';
 import { CategoryComponents } from '@/lib/categoryComponents';
 import { CodeStrings } from '@/lib/codeStrings';
@@ -8,8 +7,12 @@ import Code from '../../../components/Code';
 import Options from '../../../components/Options';
 import useAnimation from '@/hooks/useAnimation';
 import { tabOptionList } from '@/collections/tabs/option';
+// import { usePathname } from 'next/navigation';
 
 export default function Main({ id }: { id: number }) {
+  //# pathname을 바꿔서 사용하면 될꺼같음.
+  // const pathname = usePathname();
+  // const { optionList } = useOptionList(pathname.includes('header') ? headerOptionList : tabOptionList);
   const Component = CategoryComponents[id];
   const { optionList } = useOptionList(tabOptionList);
   const animate = useAnimation(optionList);
