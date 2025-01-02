@@ -1,6 +1,6 @@
 'use client';
 
-import { Option } from '@/types/optionList';
+import { OptionList } from '@/types/optionList';
 import { PreviewProps } from '@/types/props/previewProps';
 import { useState } from 'react';
 
@@ -45,16 +45,16 @@ export default function Tab2({ optionList, animate }: PreviewProps) {
     setCurrentTab(i);
   };
 
-  const activeTextColor = optionList[0]?.items.find(
-    item => item.optionValue === optionList[0]?.default,
+  const activeTextColor = optionList['버튼 색상']?.items.find(
+    item => item.optionValue === optionList['버튼 색상']?.default,
   )?.extra?.tag;
 
   return (
     <div
       className={`flex gap-1 mx-auto py-10 w-11/12 bg-white ${
-        optionList[2]?.default
+        optionList['Shadow']?.default
       } ${animate['Shadow'] ? 'shadow-[#ffb6474d]' : ''} rounded${
-        optionList[1]?.default
+        optionList['Border Radius']?.default
       } ${animate['Border Radius'] ? 'animate-border-highlight' : ''}`}>
       <ul className='flex flex-col justify-items-center w-1/4'>
         {tabs.map((tab, i) => (
@@ -62,7 +62,7 @@ export default function Tab2({ optionList, animate }: PreviewProps) {
             <button
               className={`w-full px-10 py-3 text-center ${
                 currentTab === i
-                  ? `border-r-4 border-${optionList[0]?.default} text-${activeTextColor}`
+                  ? `border-r-4 border-${optionList['버튼 색상']?.default} text-${activeTextColor}`
                   : 'border-r-4 border-transparent text-gray-400'
               }`}
               onClick={() => handleSelectTab(i)}>
@@ -78,17 +78,13 @@ export default function Tab2({ optionList, animate }: PreviewProps) {
   );
 }
 
-export const CodeString = (optionList: Option[]) => {
-  const defaultOption = (label: string) =>
-    optionList.find(option => option.label === label)?.default || '';
+export const CodeString = (optionList: OptionList) => {
+  const defaultOption = (label: string) => optionList[label]?.default || '';
 
-  const btnColorOption = optionList.find(
-    option => option.label === '버튼 색상',
-  );
-  const textColorOption =
-    btnColorOption?.items.find(
-      item => item.optionValue === btnColorOption.default,
-    )?.extra?.tag || '';
+  const btnColorOption = defaultOption('버튼 색상');
+  const textColorOption = optionList['버튼 색상']?.items.find(
+    item => item.optionValue === optionList['버튼 색상']?.default,
+  )?.extra?.tag;
   const radiusOptionDefault = defaultOption('Border Radius');
   const shadowOptionDefault = defaultOption('Shadow');
 
@@ -132,7 +128,7 @@ export default function Tab1() {
               <button
                 className={\`w-full px-10 py-3 text-center \${
                   currentTab === i
-                    ? 'border-r-4 border-${btnColorOption?.default} text-${textColorOption}'
+                    ? 'border-r-4 border-${btnColorOption} text-${textColorOption}'
                     : 'border-r-4 border-transparent text-gray-400'
                 }\`}
                 onClick={() => handleSelectTab(i)}>
