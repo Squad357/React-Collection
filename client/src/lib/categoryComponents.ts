@@ -6,6 +6,5 @@ export const CategoryComponents: Record<string, ComponentType<PreviewProps>> = {
   1: dynamic(() => import('@/collections/headers/header1')),
   3: dynamic(() => import('@/collections/tabs/tab1')),
   4: dynamic(() => import('@/collections/tabs/tab2')),
-  5: dynamic(() => import('@/collections/tabs/tab3')),
-  6: dynamic(() => import('@/collections/buttons/button1')),
+  5: dynamic(() => import('@/collections/buttons/button1')),
 };

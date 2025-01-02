@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Option } from '@/types/optionList';
+import { OptionList } from '@/types/optionList';
 import { PreviewProps } from '@/types/props/previewProps';
 
 export interface Tab {
@@ -42,15 +42,15 @@ export default function Tab1({ optionList, animate }: PreviewProps) {
 
   return (
     <div
-      className={`mx-auto w-11/12 ${optionList[2]?.default} ${
+      className={`mx-auto w-11/12 ${optionList['Shadow']?.default} ${
         animate['Shadow'] ? 'shadow-[#ffb6474d]' : ''
       }`}>
       <motion.ul
         className={`flex w-full justify-items-center text-lg font-semibold text-muted-foreground bg-${
-          optionList[0]?.default
-        } border-t-4 border-x-4 border-${optionList[0]?.default} ${
+          optionList['버튼 색상']?.default
+        } border-t-4 border-x-4 border-${optionList['버튼 색상']?.default} ${
           animate['Border Radius'] ? 'animate-border-highlight' : ''
-        } rounded-t${optionList[1]?.default}`}>
+        } rounded-t${optionList['Border Radius']?.default}`}>
         {tabs
           .filter(item => item.isOpen)
           .map((tab, i) => (
@@ -58,7 +58,7 @@ export default function Tab1({ optionList, animate }: PreviewProps) {
               <button
                 className={`w-full h-full ${
                   currentTab === i
-                    ? `bg-white rounded-t${optionList[1]?.default}`
+                    ? `bg-white rounded-t${optionList['Border Radius']?.default}`
                     : 'py-2'
                 }`}
                 onClick={() => handleSelectTab(i)}>
@@ -68,16 +68,15 @@ export default function Tab1({ optionList, animate }: PreviewProps) {
           ))}
       </motion.ul>
       <motion.div
-        className={`px-5 py-8 bg-white border-x-4 border-b-4 border-${optionList[0]?.default}`}>
+        className={`px-5 py-8 bg-white border-x-4 border-b-4 border-${optionList['버튼 색상']?.default}`}>
         <p>{tabs[currentTab].content}</p>
       </motion.div>
     </div>
   );
 }
 
-export const CodeString = (optionList: Option[]) => {
-  const defaultOption = (label: string) =>
-    optionList.find(option => option.label === label)?.default || '';
+export const CodeString = (optionList: OptionList) => {
+  const defaultOption = (label: string) => optionList[label]?.default || '';
 
   const btnColorOptionDefault = defaultOption('버튼 색상');
   const radiusOptionDefault = defaultOption('Border Radius');
