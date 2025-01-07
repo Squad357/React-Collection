@@ -118,7 +118,7 @@ pre {
   justify-content: center;
   align-items: center;
   width: max-content;
-
+  min-width: 100%; /* div의 width가 100% 이하일때 대비 */
   height: max-content;
   min-height: 100%;
   padding: 1.5rem;
