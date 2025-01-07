@@ -1,97 +1,67 @@
-import { Option, OptionList } from '@/types/optionList';
+import { OptionList } from '@/types/optionList';
 
 export const buttonOptionList: OptionList = {
   variants: {
     label: 'variants',
-    default: 'default',
+    default: 'bg-blue-500 text-white shadow hover:bg-blue-600',
     animate: true,
     items: [
       {
         id: 1,
-        name: 'default',
+        name: 'bg-blue-500 text-white shadow hover:bg-blue-600',
         optionValue: 'default',
-        extra: {
-          val: 'bg-blue-500 text-white shadow hover:bg-blue-600',
-        },
       },
       {
         id: 2,
-        name: 'destructive',
+        name: 'bg-red-500 text-white shadow-sm hover:bg-red-600',
         optionValue: 'destructive',
-        extra: {
-          val: 'bg-red-500 text-white shadow-sm hover:bg-red-600',
-        },
       },
       {
         id: 3,
-        name: 'outline',
+        name: 'border border-gray-300 bg-white shadow-sm hover:bg-gray-100',
         optionValue: 'outline',
-        extra: {
-          val: 'border border-gray-300 bg-white shadow-sm hover:bg-gray-100',
-        },
       },
       {
         id: 4,
-        name: 'secondary',
+        name: 'bg-gray-200 text-gray-800 shadow-sm hover:bg-gray-300',
         optionValue: 'secondary',
-        extra: {
-          val: 'bg-gray-200 text-gray-800 shadow-sm hover:bg-gray-300',
-        },
       },
       {
         id: 5,
-        name: 'ghost',
+        name: 'hover:bg-gray-100 hover:text-gray-800',
         optionValue: 'ghost',
-        extra: {
-          val: 'hover:bg-gray-100 hover:text-gray-800',
-        },
       },
       {
         id: 6,
-        name: 'link',
+        name: 'text-blue-500 underline-offset-4 hover:underline',
         optionValue: 'link',
-        extra: {
-          val: 'text-blue-500 underline-offset-4 hover:underline',
-        },
       },
     ],
   },
   size: {
     label: 'size',
-    default: 'default',
+    default: 'h-10  rounded-md px-4 py-2',
     animate: true,
     items: [
       {
         id: 1,
-        name: 'default',
+        name: 'h-10  rounded-md px-4 py-2',
         optionValue: 'default',
-        extra: {
-          val: 'h-10 px-4 py-2',
-        },
       },
       {
         id: 2,
-        name: 'sm',
+        name: 'h-8 rounded-md px-3 text-xs',
         optionValue: 'sm',
-        extra: {
-          val: 'h-8 rounded-md px-3 text-xs',
-        },
       },
       {
         id: 3,
-        name: 'lg',
+        name: 'h-12 rounded-md px-6 text-lg',
         optionValue: 'lg',
-        extra: {
-          val: 'h-12 rounded-md px-6 text-lg',
-        },
       },
       {
         id: 4,
-        name: 'icon',
+        name: 'h-10 w-10',
         optionValue: 'icon',
-        extra: {
-          val: 'h-10 w-10',
-        },
       },
     ],
   },

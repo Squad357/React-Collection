@@ -7,6 +7,8 @@ import Code from '../../../components/Code';
 import Options from '../../../components/Options';
 import useAnimation from '@/hooks/useAnimation';
 import { tabOptionList } from '@/collections/tabs/option';
+import { buttonOptionList } from '@/collections/buttons/option';
+
 // import { usePathname } from 'next/navigation';
 
 export default function PostContent({ id }: { id: number }) {
@@ -14,7 +16,7 @@ export default function PostContent({ id }: { id: number }) {
   // const pathname = usePathname();
   // const { optionList } = useOptionList(pathname.includes('header') ? headerOptionList : tabOptionList);
   const Component = CategoryComponents[id];
-  const { optionList } = useOptionList(tabOptionList);
+  const { optionList } = useOptionList(buttonOptionList);
   const animate = useAnimation(optionList);
 
   const codeString =

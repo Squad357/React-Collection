@@ -2,36 +2,41 @@
 
 import { PreviewProps } from '@/types/props/previewProps';
 import { motion } from 'framer-motion';
-import { CustomButton } from '@/components/customButton';
-import { useEffect, useState } from 'react';
+import { OptionList } from '@/types/optionList';
 
-export default function Button1({
-  optionList,
-  animate: buttonAnimate,
-}: PreviewProps) {
-  // 상태 관리
-  const [variant, setVariant] = useState(optionList.variants.default);
-  const [size, setSize] = useState(optionList.size.default);
-
-  // optionList가 변경될 때 상태 업데이트
-  useEffect(() => {
-    setVariant(optionList.variants.default);
-    setSize(optionList.size.default);
-  }, [optionList]);
-
+export default function Button1({ optionList, animate }: PreviewProps) {
   return (
     <motion.div
       layoutId='button'
       animate={{
-        scale: buttonAnimate ? 1.15 : 1,
+        scale: animate['variants'] ? 1.15 : 1,
       }}
-      className={`${buttonAnimate ? 'bg-red-200' : ''} p-4 rounded-lg`}>
-      <CustomButton
-        variant={variant}
-        size={size}
-        className={buttonAnimate ? 'animate-highlight' : ''}>
+      className={`${animate['variants'] ? 'bg-red-200' : ''} p-4 rounded-lg`}>
+      <button
+        className={`${optionList['variants']?.default} ${
+          optionList['size']?.default
+        } ${animate['size'] ? 'animate-highlight' : ''}`}>
         Button
-      </CustomButton>
+      </button>
     </motion.div>
   );
 }
+
+export const CodeString = (optionList: OptionList) => {
+  const defaultOption = (label: string) => optionList[label]?.default || '';
+
+  const variantOptionDefault = defaultOption('variants');
+  const sizeOptionDefault = defaultOption('size');
+
+  return `import { Button } from '@/components/ui/button';
+
+export default function Button1() {
+  return (
+    <button
+      className="${variantOptionDefault} ${sizeOptionDefault}"
+    >
+      Button
+    </button>
+  );
+}`;
+};
